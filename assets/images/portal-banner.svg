@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Red official-style banner pattern</title>
+  <desc id="desc">Layered red ribbons, subtle grid lines, and a warm gold accent for a formal portal header.</desc>
+  <defs>
+    <linearGradient id="redBase" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#c90012"/>
+      <stop offset=".55" stop-color="#a8000b"/>
+      <stop offset="1" stop-color="#7d0008"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#f5d27d" stop-opacity=".9"/>
+      <stop offset=".5" stop-color="#c9962e" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#f5d27d" stop-opacity=".75"/>
+    </linearGradient>
+    <pattern id="grid" width="46" height="46" patternUnits="userSpaceOnUse">
+      <path d="M46 0H0V46" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="360" fill="url(#redBase)"/>
+  <rect width="1200" height="360" fill="url(#grid)"/>
+  <path d="M0 256C190 205 329 214 495 246C690 284 877 270 1200 184V360H0Z" fill="#7c0008" opacity=".45"/>
+  <path d="M0 73C220 122 421 119 650 80C877 42 1018 41 1200 72V0H0Z" fill="#e03328" opacity=".52"/>
+  <path d="M92 284C235 237 395 235 558 260C741 289 913 281 1112 221" fill="none" stroke="url(#gold)" stroke-width="5" stroke-linecap="round" opacity=".78"/>
+  <path d="M745 58h347v7H745zM778 82h253v4H778zM812 100h206v3H812z" fill="#f4d89a" opacity=".55"/>
+  <circle cx="106" cy="93" r="54" fill="#fff" opacity=".05"/>
+  <circle cx="106" cy="93" r="36" fill="none" stroke="#f4d89a" stroke-opacity=".26" stroke-width="2"/>
+  <path d="M78 93h56M106 65v56" stroke="#f4d89a" stroke-opacity=".22" stroke-width="2"/>
+</svg>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>作品展示 - kqdhysj工作室信息门户</title>
+    <meta name="description" content="kqdhysj工作室作品展示与项目方向。">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/styles-final.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip">跳转到主要内容</a>
+
+    <header class="site-header">
+      <div class="topbar">
+        <div class="container topbar__inner">
+          <div class="topbar__status" aria-label="实时时间和天气" data-i18n-aria="status.aria">
+            <span id="current-date">2026年07月15日 星期三</span><span class="status-divider" aria-hidden="true">|</span>
+            <span class="status-time"><span data-i18n="status.timeLabel">IP时间</span><strong id="current-time">--:--:--</strong></span><span class="status-divider" aria-hidden="true">|</span>
+            <a class="status-weather" href="index.html#weather" aria-label="查看天气信息" data-i18n-aria="status.weatherAria"><span data-i18n="status.weatherLabel">天气</span><strong id="top-weather-summary">天气加载中</strong></a>
+          </div>
+          <div class="portal-tools" aria-label="语言与无障碍工具" data-i18n-aria="tools.aria">
+            <a class="topbar-link" href="index.html" data-i18n="top.home">网站首页</a>
+            <a class="topbar-link" href="convenience.html" data-i18n="top.portal">便民服务</a>
+            <button id="accessibility-mode-toggle" class="topbar-link topbar-link--button" type="button" aria-expanded="false" aria-controls="accessibility-panel" data-i18n="tool.accessibility">无障碍</button>
+            <button id="senior-mode-toggle" class="topbar-link topbar-link--button" type="button" aria-pressed="false" data-i18n="tool.care">关怀版</button>
+            <div class="language-switch" role="group" aria-label="语言切换" data-i18n-aria="language.aria">
+              <button class="tool-button language-button is-active" type="button" data-language="zh-Hans" aria-pressed="true" data-i18n="language.zhHans">简体</button>
+              <button class="tool-button language-button" type="button" data-language="zh-Hant" aria-pressed="false" data-i18n="language.zhHant">繁體</button>
+              <button class="tool-button language-button" type="button" data-language="en" aria-pressed="false" data-i18n="language.en">English</button>
+            </div>
+            <a class="topbar-mail" href="mailto:kqdhysj114514@163.com" data-i18n="top.email">邮箱联系</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="accessibility-panel" class="accessibility-toolbar" hidden>
+        <div class="container accessibility-toolbar__inner" role="region" aria-label="无障碍浏览工具" data-i18n-aria="accessPanel.aria">
+          <strong data-i18n="accessPanel.title">无障碍浏览工具</strong>
+          <div class="accessibility-toolbar__buttons">
+            <button id="reader-toggle" class="tool-button" type="button" aria-pressed="false" aria-describedby="reader-status" data-i18n="tool.reader">指针朗读</button>
+            <button id="font-increase" class="tool-button" type="button" data-i18n="tool.zoomIn">放大</button>
+            <button id="font-decrease" class="tool-button" type="button" data-i18n="tool.zoomOut">缩小</button>
+            <button id="contrast-toggle" class="tool-button" type="button" aria-pressed="false" data-i18n="tool.contrast">高对比</button>
+            <button id="access-reset" class="tool-button" type="button" data-i18n="tool.reset">重置</button>
+            <a class="tool-button" href="accessibility.html" data-i18n="tool.accessHelp">无障碍服务</a>
+          </div>
+        </div>
+      </div>
+      <p id="reader-status" class="reader-status" aria-live="polite"></p>
+
+      <div class="masthead">
+        <div class="container masthead__inner">
+          <a class="brand" href="index.html" aria-label="kqdhysj工作室首页" data-i18n-aria="brand.aria"><span class="brand__text"><strong data-i18n="brand.name">kqdhysj工作室</strong><span data-i18n="brand.subtitle">glagame、文游与单机游戏信息门户</span></span></a>
+          <form class="site-search" role="search" aria-label="站内搜索" data-i18n-aria="search.aria">
+            <label class="visually-hidden" for="site-search-input" data-i18n="search.label">站内搜索</label>
+            <input id="site-search-input" name="q" type="search" aria-label="请输入关键词" data-i18n-aria="search.input" autocomplete="off" aria-controls="site-search-results" aria-autocomplete="list">
+            <button type="submit" data-i18n="search.button">搜索</button>
+            <div id="site-search-results" class="search-results" role="listbox" aria-label="搜索建议" data-i18n-aria="search.resultsAria" hidden></div>
+            <p class="search-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+
+      <nav class="mainnav" aria-label="主导航" data-i18n-aria="nav.aria">
+        <div class="container mainnav__inner">
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainnav-list" aria-label="打开栏目导航" data-i18n-aria="nav.toggle"><span></span><span></span><span></span></button>
+          <ul id="mainnav-list" class="mainnav__list">
+            <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+            <li><a href="index.html#overview" data-i18n="nav.overview">工作室概况</a></li>
+            <li><a href="index.html#services" data-i18n="nav.services">作品服务</a></li>
+            <li><a href="works.html" data-i18n="nav.works">作品展示</a></li>
+            <li><a href="convenience.html" data-i18n="nav.portal">便民服务</a></li>
+            <li><a href="news.html" data-i18n="nav.news">工作动态</a></li>
+            <li><a href="accessibility.html" data-i18n="nav.accessibility">无障碍服务</a></li>
+            <li><a href="public-info.html" data-i18n="nav.public">信息公开</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">联系我们</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="breadcrumb-strip searchable"><div class="container breadcrumb-strip__inner"><span data-i18n="breadcrumb.current">当前位置</span><span>：</span><a href="index.html" data-i18n="breadcrumb.home">首页</a><span>&gt;</span><strong data-i18n="works.title">作品展示</strong></div></section>
+
+    <main id="main" class="subpage">
+      <div class="container">
+        <section class="subpage-panel section-anchor" aria-labelledby="works-title">
+          <div class="section-title section-title--red">
+            <h1 id="works-title" data-i18n="works.title">作品展示</h1>
+            <p>科幻视觉小说。一艘飞船，两个人。一段无人知晓的故事。</p>
+          </div>
+          <div class="accessibility-grid">
+            <a class="accessibility-card work-card searchable" href="where-stars-drift.html">
+              <h2 data-i18n="works.card1.title">星河流转时</h2>
+              <p>永恒号深空航行第 97 年。林晨从轮值休眠中被强制唤醒——十一名管理员的屏幕上只有他的亮着绿灯。能量仅剩 72%，飞船在漂流。隔离节点里还有一个意识体在线：他的妹妹林汐。她不是 AI。</p>
+              <span class="work-card__action" data-i18n="works.card1.link">查看详情</span>
+            </a>
+          </div>
+          <div class="page-actions">
+            <a class="button button--primary" href="contact.html" data-i18n="works.contact">联系工作室</a>
+            <a class="button button--secondary" href="news.html" data-i18n="nav.news">工作动态</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div>
+          <strong data-i18n="footer.title">kqdhysj工作室信息门户</strong>
+          <p><span data-i18n="footer.host">主办：kqdhysj</span>　<span data-i18n="footer.organizer">承办：kqdhysj</span>　<span data-i18n="footer.email">联系方式：kqdhysj114514@163.com</span>　<span data-i18n="footer.feedback">网站反馈：kqdhysjwebfk@yeah.net</span></p>
+        </div>
+        <div class="footer-image-actions" aria-label="网站纠错与网站地图">
+            <a class="footer-image-button" href="feedback.html" aria-label="网站纠错" data-i18n-aria="footer.feedbackPage">
+              <img src="assets/images/button-feedback-zh-Hans.svg" data-i18n-src="assets/images/button-feedback-{lang}.svg" alt="" aria-hidden="true">
+              <span class="visually-hidden" data-i18n="footer.feedbackPage">网站纠错</span>
+            </a>
+            <a class="footer-image-button" href="sitemap.html" aria-label="网站地图" data-i18n-aria="footer.sitemap">
+              <img src="assets/images/button-sitemap-zh-Hans.svg" data-i18n-src="assets/images/button-sitemap-{lang}.svg" alt="" aria-hidden="true">
+              <span class="visually-hidden" data-i18n="footer.sitemap">网站地图</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <button class="back-top" type="button" aria-label="返回顶部" data-i18n-aria="backtop.aria">↑</button>
+    <script src="js/main.js"></script>
+  </body>
+</html>

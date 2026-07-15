@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>星河流转时 - kqdhysj工作室信息门户</title>
+    <meta name="description" content="kqdhysj工作室游戏《星河流转时 / Where Stars Drift》作品详情与 Steam 购买占位信息。">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/styles-final.css">
+  </head>
+  <body data-page-title="workDetail.metaTitle" data-page-description="workDetail.metaDescription">
+    <a class="skip-link" href="#main" data-i18n="skip">跳转到主要内容</a>
+
+    <header class="site-header">
+      <div class="topbar">
+        <div class="container topbar__inner">
+          <div class="topbar__status" aria-label="实时时间和天气" data-i18n-aria="status.aria">
+            <span id="current-date">2026年07月15日 星期三</span><span class="status-divider" aria-hidden="true">|</span>
+            <span class="status-time"><span data-i18n="status.timeLabel">IP时间</span><strong id="current-time">--:--:--</strong></span><span class="status-divider" aria-hidden="true">|</span>
+            <a class="status-weather" href="index.html#weather" aria-label="查看天气信息" data-i18n-aria="status.weatherAria"><span data-i18n="status.weatherLabel">天气</span><strong id="top-weather-summary">天气加载中</strong></a>
+          </div>
+          <div class="portal-tools" aria-label="语言与无障碍工具" data-i18n-aria="tools.aria">
+            <a class="topbar-link" href="index.html" data-i18n="top.home">网站首页</a>
+            <a class="topbar-link" href="convenience.html" data-i18n="top.portal">便民服务</a>
+            <button id="accessibility-mode-toggle" class="topbar-link topbar-link--button" type="button" aria-expanded="false" aria-controls="accessibility-panel" data-i18n="tool.accessibility">无障碍</button>
+            <button id="senior-mode-toggle" class="topbar-link topbar-link--button" type="button" aria-pressed="false" data-i18n="tool.care">关怀版</button>
+            <div class="language-switch" role="group" aria-label="语言切换" data-i18n-aria="language.aria">
+              <button class="tool-button language-button is-active" type="button" data-language="zh-Hans" aria-pressed="true" data-i18n="language.zhHans">简体</button>
+              <button class="tool-button language-button" type="button" data-language="zh-Hant" aria-pressed="false" data-i18n="language.zhHant">繁體</button>
+              <button class="tool-button language-button" type="button" data-language="en" aria-pressed="false" data-i18n="language.en">English</button>
+            </div>
+            <a class="topbar-mail" href="mailto:kqdhysj114514@163.com" data-i18n="top.email">邮箱联系</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="accessibility-panel" class="accessibility-toolbar" hidden>
+        <div class="container accessibility-toolbar__inner" role="region" aria-label="无障碍浏览工具" data-i18n-aria="accessPanel.aria">
+          <strong data-i18n="accessPanel.title">无障碍浏览工具</strong>
+          <div class="accessibility-toolbar__buttons">
+            <button id="reader-toggle" class="tool-button" type="button" aria-pressed="false" aria-describedby="reader-status" data-i18n="tool.reader">指针朗读</button>
+            <button id="font-increase" class="tool-button" type="button" data-i18n="tool.zoomIn">放大</button>
+            <button id="font-decrease" class="tool-button" type="button" data-i18n="tool.zoomOut">缩小</button>
+            <button id="contrast-toggle" class="tool-button" type="button" aria-pressed="false" data-i18n="tool.contrast">高对比</button>
+            <button id="access-reset" class="tool-button" type="button" data-i18n="tool.reset">重置</button>
+            <a class="tool-button" href="accessibility.html" data-i18n="tool.accessHelp">无障碍服务</a>
+          </div>
+        </div>
+      </div>
+      <p id="reader-status" class="reader-status" aria-live="polite"></p>
+
+      <div class="masthead">
+        <div class="container masthead__inner">
+          <a class="brand" href="index.html" aria-label="kqdhysj工作室首页" data-i18n-aria="brand.aria"><span class="brand__text"><strong data-i18n="brand.name">kqdhysj工作室</strong><span data-i18n="brand.subtitle">glagame、文游与单机游戏信息门户</span></span></a>
+          <form class="site-search" role="search" aria-label="站内搜索" data-i18n-aria="search.aria">
+            <label class="visually-hidden" for="site-search-input" data-i18n="search.label">站内搜索</label>
+            <input id="site-search-input" name="q" type="search" aria-label="请输入关键词" data-i18n-aria="search.input" autocomplete="off" aria-controls="site-search-results" aria-autocomplete="list">
+            <button type="submit" data-i18n="search.button">搜索</button>
+            <div id="site-search-results" class="search-results" role="listbox" aria-label="搜索建议" data-i18n-aria="search.resultsAria" hidden></div>
+            <p class="search-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+
+      <nav class="mainnav" aria-label="主导航" data-i18n-aria="nav.aria">
+        <div class="container mainnav__inner">
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainnav-list" aria-label="打开栏目导航" data-i18n-aria="nav.toggle"><span></span><span></span><span></span></button>
+          <ul id="mainnav-list" class="mainnav__list">
+            <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+            <li><a href="index.html#overview" data-i18n="nav.overview">工作室概况</a></li>
+            <li><a href="index.html#services" data-i18n="nav.services">作品服务</a></li>
+            <li><a href="works.html" data-i18n="nav.works">作品展示</a></li>
+            <li><a href="convenience.html" data-i18n="nav.portal">便民服务</a></li>
+            <li><a href="news.html" data-i18n="nav.news">工作动态</a></li>
+            <li><a href="accessibility.html" data-i18n="nav.accessibility">无障碍服务</a></li>
+            <li><a href="public-info.html" data-i18n="nav.public">信息公开</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">联系我们</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="breadcrumb-strip searchable">
+      <div class="container breadcrumb-strip__inner">
+        <span data-i18n="breadcrumb.current">当前位置</span><span>：</span><a href="index.html" data-i18n="breadcrumb.home">首页</a><span>&gt;</span><a href="works.html" data-i18n="works.title">作品展示</a><span>&gt;</span><strong data-i18n="workDetail.breadcrumb">星河流转时</strong>
+      </div>
+    </section>
+
+    <main id="main" class="subpage">
+      <div class="container">
+        <section class="subpage-panel work-detail section-anchor searchable" aria-labelledby="work-detail-title">
+          <div class="work-detail-titlebar">
+            <div class="work-detail-titlecopy">
+              <p class="section-kicker" data-i18n="workDetail.noticeLabel">作品信息</p>
+              <h1 id="work-detail-title" data-i18n="workDetail.title">星河流转时</h1>
+              <p class="work-detail-titlebar__en" data-i18n="workDetail.englishTitle">Where Stars Drift</p>
+              <p>科幻视觉小说。一艘飞船，两个人，一段无人知晓的故事。</p>
+            </div>
+            <figure class="work-detail-logo">
+              <img src="assets/images/where-stars-drift-logo.png" alt="星河流转时游戏标志" width="1252" height="458">
+            </figure>
+          </div>
+
+          <div class="work-detail-layout">
+            <article class="work-detail-main">
+              <section class="work-block searchable" aria-labelledby="work-intro-title">
+                <h2 id="work-intro-title" data-i18n="workDetail.intro.title">作品介绍</h2>
+                <p>永恒号——人类首艘跨世代星际移民船，目标开普勒-186f。航程预计 600 年。</p>
+                <p>第 97 年，管理员林晨从休眠中被强制唤醒。飞船在深空漂流，剩下11位管理员和上传者的意识数据消失，能量仅剩 72%。唯一还在的，是隔离节点 7F 里一个半透明的蓝色投影——他的妹妹林汐。她的意识在启程前被上传到船舰数据库。现在她是生活在数字世界的人类。</p>
+                <p>本作为线性分支叙事视觉小说。玩家以管理员林晨的视角，在一个能量持续流失的飞船里与数字生命的妹妹林汐共度倒计时——通过聊天选择塑造两人的关系走向，每一次回应都在静默累积</p>
+              </section>
+
+              <section class="work-block searchable" aria-labelledby="work-feature-title">
+                <h2 id="work-feature-title" data-i18n="workDetail.features.title">作品特色</h2>
+                <ul class="work-feature-list">
+                  <li><strong>多结局分支：</strong>关键选择累积 love（爱）、hope（希望）、guilt（罪疚）三项隐藏数值，导向四种不同结局。其中之一需要特定数值组合才能触发</li>
+                  <li><strong>沉浸式叙事机制：</strong>F8 紧急蓝屏伪装、角色感知你 Alt+Tab 切出窗口、系统时间检测生日彩蛋</li>
+                  <li><strong>挂机检测：</strong>嗯......把游戏挂在后台一会就会触发</li>
+                  <li><strong>美味小游戏：</strong>通过Ren'Py Screen 系统将小游戏融入进剧情中</li>
+                </ul>
+              </section>
+            </article>
+
+            <aside class="work-detail-sidebar">
+              <section class="work-side-section searchable" aria-labelledby="work-meta-title">
+                <h2 id="work-meta-title" data-i18n="workDetail.metaHeading">基础信息</h2>
+                <dl class="work-meta-table">
+                  <div><dt>作品类型</dt><dd>科幻视觉小说 / 单机</dd></div>
+                  <div><dt>开发状态</dt><dd>剧本阶段</dd></div>
+                  <div><dt>计划平台</dt><dd>Windows / Steam</dd></div>
+                  <div><dt>发行时间</dt><dd>待公布</dd></div>
+                  <div><dt>开发</dt><dd>kqdhysj工作室</dd></div>
+                  <div><dt>引擎</dt><dd>Ren'Py</dd></div>
+                  <div><dt>语种支持</dt><dd>简体中文/香港&台湾繁体/英文/日文</dd></div>
+                </dl>
+              </section>
+
+              <section class="steam-placeholder searchable" aria-labelledby="steam-title">
+                <div class="steam-placeholder__head">
+                  <span>Steam</span>
+                  <h2 id="steam-title" data-i18n="workDetail.steam.title">Steam 商店页面待上线</h2>
+                </div>
+                <p>Steam 商店页面将在剧本完成且美术资产到位后上线。以下为计划信息，非最终确定。</p>
+                <dl class="steam-status-grid">
+                  <div><dt>商店状态</dt><dd>暂未公开</dd></div>
+                  <div><dt>预计价格</dt><dd>待定（Steam 国区定价）</dd></div>
+                  <div><dt>购买平台</dt><dd>Steam</dd></div>
+                  <div><dt>上线时间</dt><dd>待公布</dd></div>
+                </dl>
+                <button class="button button--primary steam-placeholder__button" type="button" disabled>Steam 页面待上线</button>
+                <p class="steam-placeholder__note">提示：当前按钮为占位状态。游戏尚在开发中。</p>
+              </section>
+            </aside>
+          </div>
+
+          <div class="page-actions">
+            <a class="button button--primary" href="works.html" data-i18n="workDetail.actions.back">返回作品展示</a>
+            <a class="button button--secondary" href="contact.html" data-i18n="works.contact">联系工作室</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div>
+          <strong data-i18n="footer.title">kqdhysj工作室信息门户</strong>
+          <p><span data-i18n="footer.host">主办：kqdhysj</span>　<span data-i18n="footer.organizer">承办：kqdhysj</span>　<span data-i18n="footer.email">联系方式：kqdhysj114514@163.com</span>　<span data-i18n="footer.feedback">网站反馈：kqdhysjwebfk@yeah.net</span></p>
+        </div>
+        <div class="footer-image-actions" aria-label="网站纠错与网站地图">
+          <a class="footer-image-button" href="feedback.html" aria-label="网站纠错" data-i18n-aria="footer.feedbackPage">
+            <img src="assets/images/button-feedback-zh-Hans.svg" data-i18n-src="assets/images/button-feedback-{lang}.svg" alt="" aria-hidden="true">
+            <span class="visually-hidden" data-i18n="footer.feedbackPage">网站纠错</span>
+          </a>
+          <a class="footer-image-button" href="sitemap.html" aria-label="网站地图" data-i18n-aria="footer.sitemap">
+            <img src="assets/images/button-sitemap-zh-Hans.svg" data-i18n-src="assets/images/button-sitemap-{lang}.svg" alt="" aria-hidden="true">
+            <span class="visually-hidden" data-i18n="footer.sitemap">网站地图</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <button class="back-top" type="button" aria-label="返回顶部" data-i18n-aria="backtop.aria">↑</button>
+    <script src="js/main.js"></script>
+  </body>
+</html>

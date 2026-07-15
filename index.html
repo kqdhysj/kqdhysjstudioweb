@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kqdhysj工作室信息门户</title>
+    <meta name="description" content="kqdhysj工作室信息门户，展示 glagame、文游、单机游戏创作与联系方式。">
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/styles-final.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip">跳转到主要内容</a>
+
+    <header class="site-header">
+      <div class="topbar">
+        <div class="container topbar__inner">
+          <div class="topbar__status" aria-label="实时时间和天气" data-i18n-aria="status.aria">
+            <span id="current-date">2026年07月14日 星期二</span>
+            <span class="status-divider" aria-hidden="true">|</span>
+            <span class="status-time"><span data-i18n="status.timeLabel">IP时间</span><strong id="current-time">--:--:--</strong></span>
+            <span class="status-divider" aria-hidden="true">|</span>
+            <a class="status-weather" href="#weather" aria-label="查看天气信息" data-i18n-aria="status.weatherAria">
+              <span data-i18n="status.weatherLabel">天气</span><strong id="top-weather-summary">天气加载中</strong>
+            </a>
+          </div>
+          <div class="portal-tools" aria-label="语言与无障碍工具" data-i18n-aria="tools.aria">
+            <a class="topbar-link" href="index.html" data-i18n="top.home">网站首页</a>
+            <a class="topbar-link" href="convenience.html" data-i18n="top.portal">便民服务</a>
+            <button id="accessibility-mode-toggle" class="topbar-link topbar-link--button" type="button" aria-expanded="false" aria-controls="accessibility-panel" data-i18n="tool.accessibility">无障碍</button>
+            <button id="senior-mode-toggle" class="topbar-link topbar-link--button" type="button" aria-pressed="false" data-i18n="tool.care">长者模式</button>
+            <div class="language-switch" role="group" aria-label="语言切换" data-i18n-aria="language.aria">
+              <button class="tool-button language-button is-active" type="button" data-language="zh-Hans" aria-pressed="true" data-i18n="language.zhHans">简体</button>
+              <button class="tool-button language-button" type="button" data-language="zh-Hant" aria-pressed="false" data-i18n="language.zhHant">繁體</button>
+              <button class="tool-button language-button" type="button" data-language="en" aria-pressed="false" data-i18n="language.en">English</button>
+            </div>
+            <a class="topbar-mail" href="mailto:kqdhysj114514@163.com" data-i18n="top.email">邮箱联系</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="accessibility-panel" class="accessibility-toolbar" hidden>
+        <div class="container accessibility-toolbar__inner" role="region" aria-label="无障碍浏览工具" data-i18n-aria="accessPanel.aria">
+          <strong data-i18n="accessPanel.title">无障碍浏览工具</strong>
+          <div class="accessibility-toolbar__buttons">
+            <button id="reader-toggle" class="tool-button" type="button" aria-pressed="false" aria-describedby="reader-status" data-i18n="tool.reader">指针朗读</button>
+            <button id="font-increase" class="tool-button" type="button" data-i18n="tool.zoomIn">放大</button>
+            <button id="font-decrease" class="tool-button" type="button" data-i18n="tool.zoomOut">缩小</button>
+            <button id="contrast-toggle" class="tool-button" type="button" aria-pressed="false" data-i18n="tool.contrast">高对比</button>
+            <button id="access-reset" class="tool-button" type="button" data-i18n="tool.reset">重置</button>
+            <a class="tool-button" href="accessibility.html" data-i18n="tool.accessHelp">无障碍服务</a>
+          </div>
+        </div>
+      </div>
+
+      <p id="reader-status" class="reader-status" aria-live="polite"></p>
+
+      <div class="masthead">
+        <div class="container masthead__inner">
+          <a class="brand" href="index.html" aria-label="kqdhysj工作室首页" data-i18n-aria="brand.aria">
+            <span class="brand__text">
+              <strong data-i18n="brand.name">kqdhysj工作室</strong>
+              <span data-i18n="brand.subtitle">glagame、文游与单机游戏信息门户</span>
+            </span>
+          </a>
+
+          <form class="site-search" role="search" aria-label="站内搜索" data-i18n-aria="search.aria">
+            <label class="visually-hidden" for="site-search-input" data-i18n="search.label">站内搜索</label>
+            <input id="site-search-input" name="q" type="search" aria-label="请输入关键词" data-i18n-aria="search.input" autocomplete="off" aria-controls="site-search-results" aria-autocomplete="list">
+            <button type="submit" data-i18n="search.button">搜索</button>
+            <div id="site-search-results" class="search-results" role="listbox" aria-label="搜索建议" data-i18n-aria="search.resultsAria" hidden></div>
+            <p class="search-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+
+      <nav class="mainnav" aria-label="主导航" data-i18n-aria="nav.aria">
+        <div class="container mainnav__inner">
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainnav-list" aria-label="打开栏目导航" data-i18n-aria="nav.toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul id="mainnav-list" class="mainnav__list">
+            <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+            <li><a href="index.html#overview" data-i18n="nav.overview">工作室概况</a></li>
+            <li><a href="index.html#services" data-i18n="nav.services">作品服务</a></li>
+            <li><a href="works.html" data-i18n="nav.works">作品展示</a></li>
+            <li><a href="convenience.html" data-i18n="nav.portal">便民服务</a></li>
+            <li><a href="news.html" data-i18n="nav.news">工作动态</a></li>
+            <li><a href="accessibility.html" data-i18n="nav.accessibility">无障碍服务</a></li>
+            <li><a href="public-info.html" data-i18n="nav.public">信息公开</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">联系我们</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="focus-strip searchable">
+        <div class="container focus-strip__inner">
+          <strong data-i18n="focus.label">特别关注</strong>
+          <a href="#services" data-i18n="focus.text">主打 glagame、文游与单机游戏。</a>
+        </div>
+      </section>
+
+      <div class="home-main-grid">
+        <div class="home-main-column home-main-column--primary">
+          <section class="hero section-anchor" aria-labelledby="hero-title">
+            <div class="container hero__inner">
+              <div class="hero__copy searchable">
+                <p class="section-kicker" data-i18n="hero.kicker">工作室信息发布</p>
+                <h1 id="hero-title" data-i18n="hero.title">kqdhysj工作室</h1>
+                <p data-i18n="hero.body">
+                  围绕 glagame、文游与单机，提供剧情玩法支持。
+                </p>
+                <dl class="hero-meta">
+                  <div>
+                    <dt data-i18n="hero.meta.directionLabel">主打方向</dt>
+                    <dd data-i18n="hero.meta.directionValue">glagame、文游、单机游戏</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="hero.meta.updateLabel">信息发布</dt>
+                    <dd data-i18n="hero.meta.updateValue">公告、作品服务、联系渠道</dd>
+                  </div>
+                  <div>
+                    <dt data-i18n="hero.meta.accessLabel">访问支持</dt>
+                    <dd data-i18n="hero.meta.accessValue">无障碍、关怀版、三语切换</dd>
+                  </div>
+                </dl>
+                <div class="hero__actions">
+                  <a class="button button--primary" href="#services" data-i18n="hero.primary">查看作品服务</a>
+                  <a class="button button--secondary" href="accessibility.html" data-i18n="hero.secondary">查看无障碍说明</a>
+                </div>
+              </div>
+
+              <div class="hero__panel searchable" aria-label="栏目入口" data-i18n-aria="hero.panelAria">
+                <img src="assets/images/portal-banner.svg" alt="" class="hero__visual">
+                <div class="service-window">
+                  <h2 data-i18n="window.title">栏目入口</h2>
+                  <div class="entry-links">
+                    <a href="convenience.html" data-i18n="nav.portal">便民服务</a>
+                    <a href="accessibility.html" data-i18n="nav.accessibility">无障碍服务</a>
+                    <a href="public-info.html" data-i18n="nav.public">信息公开</a>
+                    <a href="contact.html" data-i18n="nav.contact">联系我们</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="overview" class="overview section-anchor">
+            <div class="container">
+              <div class="section-title">
+                <h2 data-i18n="overview.title">工作室概况</h2>
+                <p data-i18n="overview.desc">以叙事设计、玩法规划与独立发布为核心，建设面向玩家的游戏内容门户。</p>
+              </div>
+              <div class="overview__grid">
+                <article class="overview-item searchable">
+                  <h3 data-i18n="overview.card1.title">定位明确</h3>
+                  <p data-i18n="overview.card1.body">主打 glagame、文游和单机游戏，面向剧情体验、文字互动、选择分支和轻量玩法原型持续创作。</p>
+                </article>
+                <article class="overview-item searchable">
+                  <h3 data-i18n="overview.card2.title">叙事优先</h3>
+                  <p data-i18n="overview.card2.body">重视世界观、人物关系、剧情节奏与玩家选择，让文本、规则和反馈共同服务游戏体验。</p>
+                </article>
+                <article class="overview-item searchable">
+                  <h3 data-i18n="overview.card3.title">友好访问</h3>
+                  <p data-i18n="overview.card3.body">提供简体、繁体、英文切换，并加入长者模式和辅助阅读支持，便于不同玩家浏览信息。</p>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section id="services" class="services section-anchor">
+            <div class="container">
+              <div class="section-title section-title--red">
+                <h2 data-i18n="services.title">作品服务</h2>
+                <p data-i18n="services.desc">围绕文游与单机项目生命周期，提供从概念到发布的协作支持。</p>
+              </div>
+              <div class="service-grid">
+                <article class="service-card searchable">
+                  <span>01</span>
+                  <h3 data-i18n="services.card1.title">glagame 方案策划</h3>
+                  <p data-i18n="services.card1.body">梳理题材、目标玩家、核心体验、玩法循环和版本边界，形成清晰可执行的项目方案。</p>
+                </article>
+                <article class="service-card searchable">
+                  <span>02</span>
+                  <h3 data-i18n="services.card2.title">文游剧情与分支设计</h3>
+                  <p data-i18n="services.card2.body">规划章节结构、角色弧光、选择后果、结局路线和文本呈现节奏。</p>
+                </article>
+                <article class="service-card searchable">
+                  <span>03</span>
+                  <h3 data-i18n="services.card3.title">单机游戏原型打磨</h3>
+                  <p data-i18n="services.card3.body">支持核心机制验证、关卡节奏、交互说明、可玩版本清单和体验复盘。</p>
+                </article>
+                <article class="service-card searchable">
+                  <span>04</span>
+                  <h3 data-i18n="services.card4.title">无障碍与发布协同</h3>
+                  <p data-i18n="services.card4.body">整理公告、版本信息、玩家说明和多语言内容，让作品信息更容易被阅读和传播。</p>
+                </article>
+              </div>
+            </div>
+          </section>
+
+          <section id="guide" class="guide section-anchor">
+            <div class="container">
+              <div class="section-title section-title--red">
+                <h2 data-i18n="guide.title">办事指引</h2>
+                <p data-i18n="guide.desc">按信息查询、服务入口、联系反馈和无障碍浏览梳理常用访问路径。</p>
+              </div>
+              <div class="guide-grid">
+                <article class="guide-card searchable">
+                  <span data-i18n="guide.card1.tag">入口</span>
+                  <h3 data-i18n="guide.card1.title">便民服务传送门</h3>
+                  <p data-i18n="guide.card1.body">常用创作、游戏、图像与工具入口已独立为相对页面，点击顶部“便民服务”即可进入。</p>
+                  <a href="convenience.html" data-i18n="guide.card1.link">进入传送门</a>
+                </article>
+                <article class="guide-card searchable">
+                  <span data-i18n="guide.card2.tag">公告</span>
+                  <h3 data-i18n="guide.card2.title">通知公告查询</h3>
+                  <p data-i18n="guide.card2.body">统一邮箱、平台主页、联系渠道等正式公告均以 PDF 公文形式发布。</p>
+                  <a href="notice.html" data-i18n="guide.card2.link">查看公告</a>
+                </article>
+                <article class="guide-card searchable">
+                  <span data-i18n="guide.card3.tag">公开</span>
+                  <h3 data-i18n="guide.card3.title">信息公开入口</h3>
+                  <p data-i18n="guide.card3.body">主办、承办、工作室定位和公开信息集中展示，便于核对站点信息。</p>
+                  <a href="public-info.html" data-i18n="guide.card3.link">查看公开信息</a>
+                </article>
+                <article class="guide-card searchable">
+                  <span data-i18n="guide.card4.tag">辅助</span>
+                  <h3 data-i18n="guide.card4.title">无障碍访问支持</h3>
+                  <p data-i18n="guide.card4.body">提供指针朗读、字号调整、高对比与关怀版，方便不同浏览习惯。</p>
+                  <a href="accessibility.html" data-i18n="guide.card4.link">查看无障碍服务</a>
+                </article>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="home-main-column home-main-side" aria-label="首页侧栏">
+          <section class="news notices-preview">
+            <div class="container news__grid news__grid--single">
+              <article class="news-column">
+                <div class="column-head">
+                  <h2 data-i18n="notice.title">通知公告</h2>
+                  <a href="mailto:kqdhysj114514@163.com" data-i18n="notice.consult">咨询</a>
+                </div>
+                <ul class="news-list news-list--notice">
+                  <li class="searchable">
+                    <a href="pdfs/notice-email.pdf" target="_blank" rel="noopener noreferrer" data-i18n="notice.item1">关于公布工作室统一联系邮箱的通知</a>
+                    <time datetime="2026-07-14">2026-07-14</time>
+                  </li>
+                  <li class="searchable">
+                    <a href="pdfs/notice-bilibili.pdf" target="_blank" rel="noopener noreferrer" data-i18n="notice.item2">关于公开 B 站主页入口的说明</a>
+                    <time datetime="2026-07-14">2026-07-14</time>
+                  </li>
+                  <li class="searchable">
+                    <a href="pdfs/notice-x.pdf" target="_blank" rel="noopener noreferrer" data-i18n="notice.item3">关于公开 X 平台账号信息的公告</a>
+                    <time datetime="2026-07-14">2026-07-14</time>
+                  </li>
+                  <li class="searchable">
+                    <a href="pdfs/notice-facebook.pdf" target="_blank" rel="noopener noreferrer" data-i18n="notice.item4">关于公开 Facebook 联系渠道的公告</a>
+                    <time datetime="2026-07-14">2026-07-14</time>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section id="weather" class="weather section-anchor">
+            <div class="container weather__inner">
+              <div class="section-title section-title--red">
+                <h2 data-i18n="weather.title">便民天气</h2>
+                <p data-i18n="weather.desc">自动按 IP 识别所在地，支持全国主要城市搜索，并调用 Open-Meteo 天气 API 提供当前天气参考。</p>
+              </div>
+              <div class="weather-panel searchable" aria-live="polite">
+                <div class="weather-panel__controls">
+                  <label for="weather-city" data-i18n="weather.cityLabel">城市</label>
+                  <input id="weather-city" name="weather-city" type="search" list="weather-city-list" autocomplete="off" placeholder="输入或选择城市" aria-label="输入全国城市名" data-i18n-aria="weather.cityAria">
+                  <datalist id="weather-city-list">
+                    <option value="北京"></option>
+                    <option value="上海"></option>
+                    <option value="广州"></option>
+                    <option value="深圳"></option>
+                    <option value="东莞"></option>
+                    <option value="成都"></option>
+                    <option value="杭州"></option>
+                    <option value="武汉"></option>
+                    <option value="西安"></option>
+                    <option value="南京"></option>
+                    <option value="重庆"></option>
+                    <option value="天津"></option>
+                    <option value="乌鲁木齐"></option>
+                    <option value="拉萨"></option>
+                    <option value="漠河"></option>
+                    <option value="三亚"></option>
+                  </datalist>
+                  <button class="weather-button button button--secondary" type="button" id="weather-refresh" data-i18n="weather.refresh">查询天气</button>
+                  <button class="weather-button button button--secondary" type="button" id="weather-geolocation" data-i18n="weather.location">使用当前位置</button>
+                </div>
+                <div class="weather-panel__body">
+                  <div class="weather-main">
+                    <span class="weather-location" id="weather-location" data-i18n="weather.loadingLocation">天气加载中</span>
+                    <strong id="weather-temp">--°C</strong>
+                    <span id="weather-summary" data-i18n="weather.loading">正在请求天气数据</span>
+                  </div>
+                  <dl class="weather-details">
+                    <div>
+                      <dt data-i18n="weather.apparent">体感温度</dt>
+                      <dd id="weather-apparent">--°C</dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="weather.humidity">相对湿度</dt>
+                      <dd id="weather-humidity">--%</dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="weather.wind">风速</dt>
+                      <dd id="weather-wind">-- km/h</dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="weather.updated">更新时间</dt>
+                      <dd id="weather-updated">--</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="quick-links section-anchor">
+            <div class="container side-panel-grid">
+              <article class="side-panel searchable">
+                <div class="column-head">
+                  <h2 data-i18n="quick.title">快捷服务</h2>
+                  <a href="convenience.html" data-i18n="quick.more">进入</a>
+                </div>
+                <ul class="news-list">
+                  <li>
+                    <a href="convenience.html" data-i18n="quick.item1">便民服务（传送门）</a>
+                    <time data-i18n="quick.tag1">相对链接</time>
+                  </li>
+                  <li>
+                    <a href="accessibility.html" data-i18n="quick.item2">无障碍服务与指针朗读</a>
+                    <time data-i18n="quick.tag2">服务</time>
+                  </li>
+                  <li>
+                    <a href="public-info.html" data-i18n="quick.item3">主办承办信息公开</a>
+                    <time data-i18n="quick.tag3">公开</time>
+                  </li>
+                  <li>
+                    <a href="contact.html" data-i18n="quick.item4">邮箱与平台联系方式</a>
+                    <time data-i18n="quick.tag4">联系</time>
+                  </li>
+                  <li>
+                    <a href="works.html" data-i18n="quick.item5">作品展示</a>
+                    <time data-i18n="quick.tag5">项目</time>
+                  </li>
+                  <li>
+                    <a href="feedback.html" data-i18n="quick.item6">网站纠错与反馈</a>
+                    <time data-i18n="quick.tag6">反馈</time>
+                  </li>
+                  <li>
+                    <a href="sitemap.html" data-i18n="quick.item7">网站地图与访问帮助</a>
+                    <time data-i18n="quick.tag7">索引</time>
+                  </li>
+                </ul>
+              </article>
+            </div>
+          </section>
+        </aside>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div>
+          <strong data-i18n="footer.title">kqdhysj工作室信息门户</strong>
+          <p><span data-i18n="footer.host">主办：kqdhysj</span>　<span data-i18n="footer.organizer">承办：kqdhysj</span>　<span data-i18n="footer.email">联系方式：kqdhysj114514@163.com</span>　<span data-i18n="footer.feedback">网站反馈：kqdhysjwebfk@yeah.net</span></p>
+        </div>
+        <div class="footer-image-actions" aria-label="网站纠错与网站地图">
+            <a class="footer-image-button" href="feedback.html" aria-label="网站纠错" data-i18n-aria="footer.feedbackPage">
+              <img src="assets/images/button-feedback-zh-Hans.svg" data-i18n-src="assets/images/button-feedback-{lang}.svg" alt="" aria-hidden="true">
+              <span class="visually-hidden" data-i18n="footer.feedbackPage">网站纠错</span>
+            </a>
+            <a class="footer-image-button" href="sitemap.html" aria-label="网站地图" data-i18n-aria="footer.sitemap">
+              <img src="assets/images/button-sitemap-zh-Hans.svg" data-i18n-src="assets/images/button-sitemap-{lang}.svg" alt="" aria-hidden="true">
+              <span class="visually-hidden" data-i18n="footer.sitemap">网站地图</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <button class="back-top" type="button" aria-label="返回顶部" data-i18n-aria="backtop.aria">↑</button>
+    <script src="js/main.js"></script>
+  </body>
+</html>
