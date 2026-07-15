@@ -1154,6 +1154,7 @@ const state = {
   activeReadTarget: null,
   weather: null,
   weatherCitySuggestTimer: 0,
+  sixtySevenWobbleTimer: 0,
   searchMatches: [],
 };
 
@@ -1434,6 +1435,19 @@ function renderSearchResults(matches) {
   searchResults.hidden = false;
 }
 
+function triggerSixtySevenWobble(query) {
+  const normalizedQuery = query.replace(/[\s\-_－—]+/g, "");
+  if (normalizedQuery !== "67") return;
+
+  document.body.classList.remove("is-sixty-seven-wobbling");
+  void document.body.offsetWidth;
+  document.body.classList.add("is-sixty-seven-wobbling");
+  window.clearTimeout(state.sixtySevenWobbleTimer);
+  state.sixtySevenWobbleTimer = window.setTimeout(() => {
+    document.body.classList.remove("is-sixty-seven-wobbling");
+  }, 3000);
+}
+
 function locateSearchMatch(match) {
   if (!match) return;
   if (match.href) {
@@ -1452,6 +1466,7 @@ function locateSearchMatch(match) {
 function updateSearchSuggestions() {
   if (!searchInput) return;
   const query = searchInput.value.trim();
+  triggerSixtySevenWobble(query);
   if (!query) {
     hideSearchResults();
     if (searchStatus) searchStatus.textContent = "";
