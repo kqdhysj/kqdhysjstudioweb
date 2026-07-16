@@ -31,7 +31,11 @@ function extractObject(source, marker, label) {
   assert(start >= 0, `main.js defines ${label}`);
   if (start < 0) return null;
 
-  let cursor = source.indexOf("{", start);
+  const objectStart = source.indexOf("{", start);
+  assert(objectStart >= 0, `${label} object starts with {`);
+  if (objectStart < 0) return null;
+
+  let cursor = objectStart;
   let depth = 0;
   let inString = false;
   let quote = "";
@@ -54,7 +58,7 @@ function extractObject(source, marker, label) {
     if (char === "}") {
       depth -= 1;
       if (depth === 0) {
-        return Function(`return (${source.slice(source.indexOf("{", start), cursor + 1)});`)();
+        return Function(`return (${source.slice(objectStart, cursor + 1)});`)();
       }
     }
   }
@@ -65,12 +69,15 @@ function extractObject(source, marker, label) {
 
 const js = read(path.join("js", "main.js"));
 const translations = extractObject(js, "const translations = ", "translations");
-const extraTranslationOverrides = js.includes("const extraTranslationOverrides = ")
-  ? extractObject(js, "const extraTranslationOverrides = ", "extraTranslationOverrides")
-  : {};
-const translationCompletionOverrides = js.includes("const translationCompletionOverrides = ")
-  ? extractObject(js, "const translationCompletionOverrides = ", "translationCompletionOverrides")
-  : {};
+const extraTranslationOverrides = extractObject(js, "const extraTranslationOverrides = ", "extraTranslationOverrides");
+const translationCompletionOverrides = extractObject(js, "const translationCompletionOverrides = ", "translationCompletionOverrides");
+
+assert(translations !== null, "translations parsed successfully");
+assert(extraTranslationOverrides !== null, "extraTranslationOverrides parsed successfully");
+assert(translationCompletionOverrides !== null, "translationCompletionOverrides parsed successfully");
+if (!translations || !extraTranslationOverrides || !translationCompletionOverrides) {
+  process.exit(1);
+}
 
 if (extraTranslationOverrides && translationCompletionOverrides) {
   for (const [language, overrides] of Object.entries(translationCompletionOverrides)) {

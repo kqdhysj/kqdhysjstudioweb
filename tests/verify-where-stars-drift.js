@@ -40,6 +40,15 @@ for (const tag of metaCells) {
   assert(tag.includes("data-i18n="), `metadata cell is translatable: ${tag}`);
 }
 
+const steamGrid = detail.match(/<dl class="steam-status-grid">[\s\S]*?<\/dl>/)?.[0] || "";
+assert(steamGrid.length > 0, "detail page contains Steam status grid");
+
+const steamCells = steamGrid.match(/<(?:dt|dd)\b[^>]*>/g) || [];
+assert(steamCells.length === 8, "Steam status grid contains four label/value rows");
+for (const tag of steamCells) {
+  assert(tag.includes("data-i18n="), `Steam status cell is translatable: ${tag}`);
+}
+
 for (const needle of [
   ".work-detail-layout",
   ".work-detail-logo",
@@ -68,8 +77,17 @@ for (const key of [
   "workDetail.intro.p2",
   "workDetail.feature1",
   "workDetail.steam.title",
+  "workDetail.steam.desc",
+  "workDetail.steam.statusLabel",
+  "workDetail.steam.statusValue",
+  "workDetail.steam.priceLabel",
   "workDetail.steam.price",
+  "workDetail.steam.platformLabel",
+  "workDetail.steam.platformValue",
+  "workDetail.steam.dateLabel",
+  "workDetail.steam.dateValue",
   "workDetail.steam.button",
+  "workDetail.steam.note",
   "works.card1.link",
   "workDetail.meta.typeLabel",
   "workDetail.meta.typeValue",
@@ -87,7 +105,11 @@ for (const key of [
   "workDetail.meta.languageValue",
 ]) {
   assert(js.includes(`"${key}"`), `translation key ${key} exists`);
-  assert(detail.includes(`data-i18n="${key}"`) || !key.startsWith("workDetail.meta."), `detail page uses ${key}`);
+  assert(
+    detail.includes(`data-i18n="${key}"`) ||
+      !(key.startsWith("workDetail.meta.") || key.startsWith("workDetail.steam.")),
+    `detail page uses ${key}`
+  );
 }
 
 process.exit(failed ? 1 : 0);
