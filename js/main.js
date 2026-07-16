@@ -419,6 +419,7 @@ const translations = {
     "works.contact": "联系工作室",
     "workDetail.metaTitle": "星河流转时 - kqdhysj工作室信息门户",
     "workDetail.metaDescription": "kqdhysj工作室游戏《星河流转时 / Where Stars Drift》作品详情与 Steam 购买占位信息。",
+    "workDetail.logoAlt": "星河流转时游戏标志",
     "workDetail.breadcrumb": "星河流转时",
     "workDetail.noticeLabel": "作品信息",
     "workDetail.title": "星河流转时",
@@ -776,6 +777,7 @@ const translations = {
     "works.contact": "聯絡工作室",
     "workDetail.metaTitle": "星河流轉時 - kqdhysj工作室資訊入口",
     "workDetail.metaDescription": "kqdhysj工作室遊戲《星河流轉時 / Where Stars Drift》作品詳情與 Steam 購買佔位資訊。",
+    "workDetail.logoAlt": "星河流轉時遊戲標誌",
     "workDetail.breadcrumb": "星河流轉時",
     "workDetail.noticeLabel": "作品資訊",
     "workDetail.title": "星河流轉時",
@@ -1133,6 +1135,7 @@ const translations = {
     "works.contact": "Contact the studio",
     "workDetail.metaTitle": "Where Stars Drift - kqdhysj Studio Portal",
     "workDetail.metaDescription": "Details for kqdhysj Studio game Where Stars Drift, with placeholder Steam purchase information.",
+    "workDetail.logoAlt": "Where Stars Drift game logo",
     "workDetail.breadcrumb": "Where Stars Drift",
     "workDetail.noticeLabel": "Work Information",
     "workDetail.title": "Where Stars Drift",
@@ -1464,6 +1467,7 @@ const extraTranslationOverrides = {
     "works.contact": "スタジオへ連絡",
     "workDetail.metaTitle": "星河流転時 - kqdhysjスタジオ情報ポータル",
     "workDetail.metaDescription": "kqdhysjスタジオのゲーム『星河流転時 / Where Stars Drift』の作品詳細と Steam 購入枠です。",
+    "workDetail.logoAlt": "『星河流転時』ゲームロゴ",
     "workDetail.breadcrumb": "星河流転時",
     "workDetail.noticeLabel": "作品情報",
     "workDetail.title": "星河流転時",
@@ -1775,6 +1779,7 @@ const extraTranslationOverrides = {
     "works.contact": "스튜디오 문의",
     "workDetail.metaTitle": "星河流转时 - kqdhysj 스튜디오 정보 포털",
     "workDetail.metaDescription": "kqdhysj 스튜디오 게임 《星河流转时 / Where Stars Drift》의 작품 상세와 Steam 구매 자리표시 정보입니다.",
+    "workDetail.logoAlt": "《星河流转时》 게임 로고",
     "workDetail.breadcrumb": "星河流转时",
     "workDetail.noticeLabel": "작품 정보",
     "workDetail.title": "星河流转时",
@@ -2241,6 +2246,7 @@ const translationCompletionOverrides = {
     "works.contact": "聯絡工作室",
     "workDetail.metaTitle": "星河流轉時 - kqdhysj工作室資訊入口",
     "workDetail.metaDescription": "kqdhysj工作室遊戲《星河流轉時 / Where Stars Drift》之詳頁與 Steam 購取佔位資訊。",
+    "workDetail.logoAlt": "《星河流轉時》遊戲之標",
     "workDetail.breadcrumb": "星河流轉時",
     "workDetail.noticeLabel": "作品資訊",
     "workDetail.title": "星河流轉時",
@@ -2465,6 +2471,10 @@ function applyLanguage(language) {
 
   document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
     element.setAttribute("placeholder", t(element.dataset.i18nPlaceholder));
+  });
+
+  document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+    element.setAttribute("alt", t(element.dataset.i18nAlt));
   });
 
   document.querySelectorAll("[data-i18n-src]").forEach((element) => {

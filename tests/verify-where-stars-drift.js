@@ -29,6 +29,7 @@ assert(works.includes('href="where-stars-drift.html"'), "works page links to det
 assert(detail.includes("Where Stars Drift"), "detail page contains official English title");
 assert(detail.includes('class="work-detail-logo"'), "detail page places logo beside title");
 assert(detail.includes("assets/images/where-stars-drift-logo.png"), "detail page references work logo asset");
+assert(detail.includes('data-i18n-alt="workDetail.logoAlt"'), "work logo alt text is translatable");
 assert(detail.includes('data-i18n="workDetail.steam.title"'), "detail page has Steam placeholder panel");
 
 const metaTable = detail.match(/<dl class="work-meta-table">[\s\S]*?<\/dl>/)?.[0] || "";
@@ -73,6 +74,7 @@ for (const needle of [
 for (const key of [
   "workDetail.title",
   "workDetail.englishTitle",
+  "workDetail.logoAlt",
   "workDetail.intro.p1",
   "workDetail.intro.p2",
   "workDetail.feature1",
