@@ -498,7 +498,9 @@ const translations = {
     "consult.typeOther": "其他",
     "consult.name": "你的称呼",
     "consult.contact": "联系方式",
-    "consult.contactPlaceholder": "可填写邮箱、QQ、微信或其他方式",
+    "consult.contactPlaceholder": "请填写邮箱或11位手机号",
+    "consult.contactHelp": "仅支持邮箱或 11 位手机号。请确认联系方式真实可用，否则可能无法回复。",
+    "consult.contactInvalid": "联系方式格式不正确，请填写邮箱或 11 位手机号。",
     "consult.language": "希望使用的语言",
     "consult.subject": "咨询标题",
     "consult.message": "咨询内容",
@@ -853,7 +855,9 @@ const translations = {
     "consult.typeOther": "其他",
     "consult.name": "你的稱呼",
     "consult.contact": "聯絡方式",
-    "consult.contactPlaceholder": "可填寫電郵、QQ、微信或其他方式",
+    "consult.contactPlaceholder": "請填寫電郵或11位手機號",
+    "consult.contactHelp": "僅支持電郵或 11 位手機號。請確認聯絡方式真實可用，否則可能無法回覆。",
+    "consult.contactInvalid": "聯絡方式格式不正確，請填寫電郵或 11 位手機號。",
     "consult.language": "希望使用的語言",
     "consult.subject": "諮詢標題",
     "consult.message": "諮詢內容",
@@ -1208,7 +1212,9 @@ const translations = {
     "consult.typeOther": "Other",
     "consult.name": "Your name",
     "consult.contact": "Contact method",
-    "consult.contactPlaceholder": "Email, QQ, WeChat, or another contact method",
+    "consult.contactPlaceholder": "Enter an email address or 11-digit mobile number",
+    "consult.contactHelp": "Only an email address or 11-digit mobile number is supported. Make sure it can receive replies, otherwise we may not be able to respond.",
+    "consult.contactInvalid": "The contact method is invalid. Enter an email address or 11-digit mobile number.",
     "consult.language": "Preferred language",
     "consult.subject": "Subject",
     "consult.message": "Message",
@@ -1393,9 +1399,34 @@ function setConsultationSubmitting(isSubmitting) {
   submitButton.setAttribute("aria-busy", String(isSubmitting));
 }
 
+function isValidConsultationContact(value) {
+  const contact = String(value || "").trim();
+  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  const mainlandMobilePattern = /^1[3-9]\d{9}$/;
+  return emailPattern.test(contact) || mainlandMobilePattern.test(contact);
+}
+
+function validateConsultationContact(showMessage = true) {
+  const contactInput = consultationForm?.querySelector('[name="visitor_contact"]');
+  if (!contactInput) return true;
+
+  const isValid = isValidConsultationContact(contactInput.value);
+  contactInput.setCustomValidity(isValid ? "" : t("consult.contactInvalid"));
+  contactInput.setAttribute("aria-invalid", String(!isValid));
+
+  if (!isValid && showMessage) {
+    setConsultationStatus("consult.contactInvalid", "error");
+    contactInput.reportValidity?.();
+  }
+
+  return isValid;
+}
+
 async function handleConsultationSubmit(event) {
   event.preventDefault();
   if (!consultationForm || consultationForm.dataset.submitting === "true") return;
+
+  if (!validateConsultationContact()) return;
 
   const formData = new FormData(consultationForm);
   if (formData.get("botcheck")) {
@@ -1435,6 +1466,9 @@ async function handleConsultationSubmit(event) {
 
 function setupConsultationForm() {
   if (!consultationForm) return;
+  const contactInput = consultationForm.querySelector('[name="visitor_contact"]');
+  contactInput?.addEventListener("input", () => validateConsultationContact(false));
+  contactInput?.addEventListener("blur", () => validateConsultationContact(false));
   consultationForm.addEventListener("submit", handleConsultationSubmit);
 }
 

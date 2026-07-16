@@ -146,7 +146,8 @@
 
               <label class="form-field">
                 <span data-i18n="consult.contact">联系方式</span>
-                <input type="text" name="visitor_contact" autocomplete="email" required data-i18n-placeholder="consult.contactPlaceholder" placeholder="可填写邮箱、QQ、微信或其他方式">
+                <input type="text" name="visitor_contact" autocomplete="email" inputmode="email" required aria-describedby="visitor-contact-help" data-i18n-placeholder="consult.contactPlaceholder" placeholder="请填写邮箱或11位手机号">
+                <small id="visitor-contact-help" data-i18n="consult.contactHelp">仅支持邮箱或 11 位手机号。请确认联系方式真实可用，否则可能无法回复。</small>
               </label>
 
               <label class="form-field">
