@@ -17,7 +17,7 @@ if (
   );
 }
 
-const excludedEntries = new Set([".git", "node_modules"]);
+const excludedEntries = new Set([".git", "node_modules", "tmp"]);
 
 fs.rmSync(destination, { recursive: true, force: true });
 fs.mkdirSync(destination, { recursive: true });

@@ -32,6 +32,7 @@ for (const relativePath of [
   "scripts/run-checks.js",
   "scripts/sync-outputs.js",
   "scripts/serve.js",
+  "tests/verify-bilibili-link.js",
   "tests/verify-ciallo-barrage.js",
   "tests/verify-consultation-form.js",
   "tests/verify-contact-validation.js",
@@ -40,6 +41,9 @@ for (const relativePath of [
 ]) {
   assert(fs.existsSync(path.join(root, relativePath)), `${relativePath} exists`);
 }
+
+const syncScript = readText(path.join("scripts", "sync-outputs.js"));
+assert(syncScript.includes('"tmp"'), "sync script excludes temporary files");
 
 if (fs.existsSync(path.join(root, "MAINTAINING.md"))) {
   const maintaining = readText("MAINTAINING.md");
