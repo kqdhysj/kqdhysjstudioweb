@@ -40,6 +40,7 @@ for (const relativePath of [
   "tests/verify-email-obfuscation.js",
   "tests/verify-html-i18n-bindings.js",
   "tests/verify-language-coverage.js",
+  "tests/verify-locale-polish.js",
   "tests/verify-where-stars-drift.js",
 ]) {
   assert(fs.existsSync(path.join(root, relativePath)), `${relativePath} exists`);

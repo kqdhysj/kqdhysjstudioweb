@@ -90,7 +90,7 @@ if (extraTranslationOverrides && translationCompletionOverrides) {
 
 if (translations && extraTranslationOverrides) {
   for (const [language, overrides] of Object.entries(extraTranslationOverrides)) {
-    const baseLanguage = language === "lzh" ? "zh-Hant" : "en";
+    const baseLanguage = language === "lzh" ? "zh-Hans" : "en";
     translations[language] = { ...translations[baseLanguage], ...overrides };
   }
 }
@@ -148,21 +148,18 @@ if (translations) {
     }
   }
 
-  const simplifiedResidue = [
-    "\u7b80", "\u4f53", "\u65e0", "\u788d", "\u6c14", "\u95e8", "\u4e3a", "\u4e0e", "\u89c2", "\u680f",
-    "\u53d1", "\u52a1", "\u663e", "\u573a", "\u65f6", "\u6761", "\u8054", "\u7edc", "\u90ae",
-    "\u8d44", "\u8baf", "\u8bbf", "\u95ee", "\u8bfb", "\u8f93", "\u5173", "\u952e",
-    "\u7ed3", "\u9879", "\u8be6", "\u4e70", "\u4ef7", "\u5f00", "\u72b6", "\u6001", "\u8bed", "\u8fc1",
-    "\u590d", "\u95ed", "\u542f", "\u5c42", "\u5355", "\u7ebf", "\u987a", "\u8f6c", "\u9f84", "\u540e",
-    "\u5185", "\u6d4b", "\u9690", "\u79c1", "\u9519", "\u8bef", "\u9009", "\u62e9", "\u5f53", "\u9ed8",
-    "\u5e2e", "\u4f20", "\u56fe", "\u6b22", "\u8fc7", "\u9875", "\u79f0", "\u5b9e", "\u53f7"
+  const traditionalResidue = [
+    "\u8cc7", "\u8a0a", "\u806f", "\u7d61", "\u90f5", "\u66f8", "\u96fb", "\u9580", "\u6236", "\u9801",
+    "\u93c8", "\u767c", "\u70ba", "\u8207", "\u81fa", "\u7dda", "\u7db2", "\u8a2a", "\u8b80",
+    "\u986f", "\u9805", "\u8a73", "\u958b", "\u72c0", "\u614b", "\u8a9e", "\u9077", "\u5fa9", "\u95dc",
+    "\u9375", "\u865f", "\u9ad4", "\u5716", "\u5ee3", "\u89bd"
   ];
-  const lzhSimplifiedHits = Object.entries(translations.lzh || {}).filter(([, value]) => (
-    typeof value === "string" && simplifiedResidue.some((char) => value.includes(char))
+  const lzhTraditionalHits = Object.entries(translations.lzh || {}).filter(([, value]) => (
+    typeof value === "string" && traditionalResidue.some((char) => value.includes(char))
   ));
-  assert(lzhSimplifiedHits.length === 0, "lzh text contains no common Simplified Chinese residue");
-  if (lzhSimplifiedHits.length) {
-    console.error(lzhSimplifiedHits.map(([key, value]) => `${key}: ${value}`).join("\n"));
+  assert(lzhTraditionalHits.length === 0, "lzh text contains no common Traditional Chinese residue");
+  if (lzhTraditionalHits.length) {
+    console.error(lzhTraditionalHits.map(([key, value]) => `${key}: ${value}`).join("\n"));
   }
 }
 
