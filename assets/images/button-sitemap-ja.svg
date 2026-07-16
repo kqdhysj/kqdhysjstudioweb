@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="86" viewBox="0 0 420 86" role="img" aria-labelledby="title desc">
+  <title id="title">サイトマップ</title>
+  <desc id="desc">セクション索引・閲覧支援</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#c40010"/><stop offset=".58" stop-color="#a9000d"/><stop offset="1" stop-color="#7f0008"/></linearGradient>
+    <linearGradient id="shine" x1="0" x2="1"><stop offset="0" stop-color="#fff3bf" stop-opacity=".78"/><stop offset=".45" stop-color="#d6a13a" stop-opacity=".45"/><stop offset="1" stop-color="#fff3bf" stop-opacity=".16"/></linearGradient>
+  </defs>
+  <rect width="420" height="86" fill="#7f0008"/>
+  <rect x="3" y="3" width="414" height="80" fill="url(#bg)" stroke="#f2d486" stroke-width="2"/>
+  <rect x="10" y="10" width="400" height="66" fill="none" stroke="#d9ab45" stroke-width="1"/>
+  <path d="M0 60 C76 47 145 68 214 57 C282 45 344 38 420 47 L420 86 L0 86 Z" fill="#8d0009" opacity=".55"/>
+  <path d="M283 18 L394 18" stroke="url(#shine)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M302 27 L391 27" stroke="#ffe4a1" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+  <g transform="translate(29 18)" fill="none" stroke="#fff5cf" stroke-width="3" stroke-linecap="round"><path d="M17 15 H47 V43 H17 Z"/><path d="M0 28 H17 M32 0 V15 M32 43 V54"/><circle cx="0" cy="28" r="7" fill="#a9000d" stroke="#f3cf76"/><circle cx="32" cy="0" r="7" fill="#a9000d" stroke="#f3cf76"/><circle cx="32" cy="54" r="7" fill="#a9000d" stroke="#f3cf76"/><path d="M25 25 H40 M25 34 H40"/></g>
+  <text x="94" y="41" fill="#fff8df" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="28" font-weight="700">サイトマップ</text>
+  <text x="96" y="64" fill="#ffe1a1" font-family="Microsoft YaHei, Noto Sans CJK SC, Arial, sans-serif" font-size="15" font-weight="700">セクション索引・閲覧支援</text>
+  <text x="363" y="57" fill="#fff3bf" font-family="Consolas, Courier New, monospace" font-size="28" font-weight="700">&gt;</text>
+</svg>
