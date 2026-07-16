@@ -34,6 +34,7 @@ for (const relativePath of [
   "scripts/serve.js",
   "tests/verify-bilibili-link.js",
   "tests/verify-ciallo-barrage.js",
+  "tests/verify-convenience-links.js",
   "tests/verify-consultation-form.js",
   "tests/verify-contact-validation.js",
   "tests/verify-email-obfuscation.js",

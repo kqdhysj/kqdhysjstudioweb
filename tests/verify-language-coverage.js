@@ -129,6 +129,7 @@ if (translations) {
     "language.ja",
     "language.ko",
     "portal.touchgal.title",
+    "portal.renpy.title",
     "portal.gequbao.title",
     "portal.photopea.title",
     "portal.claude.title",
