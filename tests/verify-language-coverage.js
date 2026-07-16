@@ -68,6 +68,18 @@ const translations = extractObject(js, "const translations = ", "translations");
 const extraTranslationOverrides = js.includes("const extraTranslationOverrides = ")
   ? extractObject(js, "const extraTranslationOverrides = ", "extraTranslationOverrides")
   : {};
+const translationCompletionOverrides = js.includes("const translationCompletionOverrides = ")
+  ? extractObject(js, "const translationCompletionOverrides = ", "translationCompletionOverrides")
+  : {};
+
+if (extraTranslationOverrides && translationCompletionOverrides) {
+  for (const [language, overrides] of Object.entries(translationCompletionOverrides)) {
+    extraTranslationOverrides[language] = {
+      ...(extraTranslationOverrides[language] || {}),
+      ...overrides,
+    };
+  }
+}
 
 if (translations && extraTranslationOverrides) {
   for (const [language, overrides] of Object.entries(extraTranslationOverrides)) {
@@ -95,6 +107,54 @@ if (translations) {
 
   for (const [language, key] of Object.entries(expectedLanguageKeys)) {
     assert(Boolean(translations[language]?.[key]), `${language} has its language label`);
+  }
+
+  for (const language of ["ja", "ko", "lzh"]) {
+    const missingExplicitKeys = baseKeys.filter((key) => !Object.hasOwn(extraTranslationOverrides[language] || {}, key));
+    assert(missingExplicitKeys.length === 0, `${language} has explicit translations for all keys`);
+    if (missingExplicitKeys.length) {
+      console.error(`Missing explicit translations in ${language}: ${missingExplicitKeys.join(", ")}`);
+    }
+  }
+
+  const allowedUntranslatedKeys = new Set([
+    "language.en",
+    "language.ja",
+    "language.ko",
+    "portal.touchgal.title",
+    "portal.gequbao.title",
+    "portal.photopea.title",
+    "portal.claude.title",
+    "workDetail.englishTitle",
+    "workDetail.meta.platformValue",
+    "workDetail.meta.engineValue",
+    "workDetail.steam.platformValue",
+  ]);
+  for (const language of ["ja", "ko"]) {
+    const sameAsEnglish = baseKeys.filter((key) => (
+      translations[language]?.[key] === translations.en?.[key] && !allowedUntranslatedKeys.has(key)
+    ));
+    assert(sameAsEnglish.length === 0, `${language} has no accidental English fallback text`);
+    if (sameAsEnglish.length) {
+      console.error(`Same as English in ${language}: ${sameAsEnglish.join(", ")}`);
+    }
+  }
+
+  const simplifiedResidue = [
+    "\u7b80", "\u4f53", "\u65e0", "\u788d", "\u6c14", "\u95e8", "\u4e3a", "\u4e0e", "\u89c2", "\u680f",
+    "\u53d1", "\u52a1", "\u663e", "\u573a", "\u65f6", "\u6761", "\u8054", "\u7edc", "\u90ae",
+    "\u8d44", "\u8baf", "\u8bbf", "\u95ee", "\u8bfb", "\u8f93", "\u5173", "\u952e",
+    "\u7ed3", "\u9879", "\u8be6", "\u4e70", "\u4ef7", "\u5f00", "\u72b6", "\u6001", "\u8bed", "\u8fc1",
+    "\u590d", "\u95ed", "\u542f", "\u5c42", "\u5355", "\u7ebf", "\u987a", "\u8f6c", "\u9f84", "\u540e",
+    "\u5185", "\u6d4b", "\u9690", "\u79c1", "\u9519", "\u8bef", "\u9009", "\u62e9", "\u5f53", "\u9ed8",
+    "\u5e2e", "\u4f20", "\u56fe", "\u6b22", "\u8fc7", "\u9875", "\u79f0", "\u5b9e", "\u53f7"
+  ];
+  const lzhSimplifiedHits = Object.entries(translations.lzh || {}).filter(([, value]) => (
+    typeof value === "string" && simplifiedResidue.some((char) => value.includes(char))
+  ));
+  assert(lzhSimplifiedHits.length === 0, "lzh text contains no common Simplified Chinese residue");
+  if (lzhSimplifiedHits.length) {
+    console.error(lzhSimplifiedHits.map(([key, value]) => `${key}: ${value}`).join("\n"));
   }
 }
 
