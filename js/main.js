@@ -507,9 +507,7 @@ const translations = {
     "consult.messagePlaceholder": "请尽量说明事项背景、相关页面或作品名称、希望解决的问题",
     "consult.link": "相关链接",
     "consult.linkPlaceholder": "可选",
-    "consult.reply": "是否需要回复",
-    "consult.replyYes": "需要回复",
-    "consult.replyNo": "仅提交信息，不需要回复",
+    "consult.replyDeadline": "180天内给予回复",
     "consult.consent": "我确认以上内容真实有效，并同意 kqdhysj工作室仅将本次填写的信息用于联系、咨询处理和网站反馈处理。",
     "consult.submit": "提交咨询",
     "consult.submitting": "正在提交咨询，请稍候。",
@@ -864,9 +862,7 @@ const translations = {
     "consult.messagePlaceholder": "請盡量說明事項背景、相關頁面或作品名稱、希望解決的問題",
     "consult.link": "相關連結",
     "consult.linkPlaceholder": "可選",
-    "consult.reply": "是否需要回覆",
-    "consult.replyYes": "需要回覆",
-    "consult.replyNo": "僅提交資訊，不需要回覆",
+    "consult.replyDeadline": "180天內給予回覆",
     "consult.consent": "我確認以上內容真實有效，並同意 kqdhysj工作室僅將本次填寫的資訊用於聯絡、諮詢處理和網站反饋處理。",
     "consult.submit": "提交諮詢",
     "consult.submitting": "正在提交諮詢，請稍候。",
@@ -1221,9 +1217,7 @@ const translations = {
     "consult.messagePlaceholder": "Please describe the background, related page or work, and the issue you want to resolve",
     "consult.link": "Related link",
     "consult.linkPlaceholder": "Optional",
-    "consult.reply": "Reply needed",
-    "consult.replyYes": "Reply needed",
-    "consult.replyNo": "Submit only, no reply needed",
+    "consult.replyDeadline": "We will reply within 180 days.",
     "consult.consent": "I confirm the information is accurate and agree that kqdhysj Studio may use it only for contact, inquiry handling, and website feedback handling.",
     "consult.submit": "Submit inquiry",
     "consult.submitting": "Submitting your inquiry. Please wait.",
@@ -1452,10 +1446,6 @@ async function handleConsultationSubmit(event) {
     }
 
     consultationForm.reset();
-    const replyDefault = consultationForm.querySelector('input[name="need_reply"][value="需要回复"]');
-    if (replyDefault) {
-      replyDefault.checked = true;
-    }
     setConsultationStatus("consult.success", "success");
   } catch (error) {
     setConsultationStatus("consult.error", "error");

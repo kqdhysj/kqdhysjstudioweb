@@ -29,9 +29,19 @@ for (const needle of [
   'name="message"',
   'name="botcheck"',
   'id="consultation-form-status"',
+  'data-i18n="consult.replyDeadline"',
   'data-i18n="consult.submit"',
 ]) {
   assert(contact.includes(needle), `contact.html contains ${needle}`);
+}
+
+for (const forbidden of [
+  'name="need_reply"',
+  "是否需要回复",
+  "需要回复",
+  "仅提交信息，不需要回复",
+]) {
+  assert(!contact.includes(forbidden), `contact.html does not contain ${forbidden}`);
 }
 
 for (const needle of [
@@ -42,8 +52,18 @@ for (const needle of [
   '"consult.submit"',
   '"consult.success"',
   '"consult.error"',
+  '"consult.replyDeadline"',
+  "180天内给予回复",
 ]) {
   assert(js.includes(needle), `main.js contains ${needle}`);
+}
+
+for (const forbidden of [
+  "consult.replyYes",
+  "consult.replyNo",
+  "need_reply",
+]) {
+  assert(!js.includes(forbidden), `main.js does not contain ${forbidden}`);
 }
 
 for (const needle of [

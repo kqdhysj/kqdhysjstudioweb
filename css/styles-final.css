@@ -1993,6 +1993,16 @@ strong {
   margin-top: 5px;
 }
 
+.form-reply-deadline {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(201, 154, 51, .42);
+  border-left: 4px solid var(--gold-600);
+  background: #fff8e7;
+  color: var(--red-700);
+  font-weight: 800;
+}
+
 .form-actions {
   display: flex;
   flex-wrap: wrap;
