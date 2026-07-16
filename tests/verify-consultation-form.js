@@ -44,6 +44,37 @@ for (const forbidden of [
   assert(!contact.includes(forbidden), `contact.html does not contain ${forbidden}`);
 }
 
+const consultationTypeSelect =
+  contact.match(/<select name="consultation_type"[\s\S]*?<\/select>/)?.[0] || "";
+assert(consultationTypeSelect.length > 0, "consultation type select exists");
+assert(
+  (consultationTypeSelect.match(/<option\b/g) || []).length === 4,
+  "consultation type select contains placeholder plus three options"
+);
+
+for (const requiredKey of [
+  "consult.typeProject",
+  "consult.typeWorks",
+  "consult.typeOther",
+]) {
+  assert(
+    consultationTypeSelect.includes(`data-i18n="${requiredKey}"`),
+    `consultation type keeps ${requiredKey}`
+  );
+}
+
+for (const removedKey of [
+  "consult.typeCooperation",
+  "consult.typeWebsite",
+  "consult.typeAccessibility",
+]) {
+  assert(
+    !consultationTypeSelect.includes(`data-i18n="${removedKey}"`),
+    `consultation type removes ${removedKey}`
+  );
+  assert(!js.includes(`"${removedKey}"`), `main.js removes ${removedKey}`);
+}
+
 for (const needle of [
   "consultationForm",
   "setupConsultationForm",
