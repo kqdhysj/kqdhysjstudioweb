@@ -5,6 +5,7 @@ const root = path.resolve(__dirname, "..");
 const contact = fs.readFileSync(path.join(root, "contact.html"), "utf8");
 const js = fs.readFileSync(path.join(root, "js", "main.js"), "utf8");
 const css = fs.readFileSync(path.join(root, "css", "styles-final.css"), "utf8");
+const web3FormsAccessKey = ["6325dd2b", "6704", "4b1e", "9733", "106d1f5d011c"].join("-");
 
 let failed = false;
 
@@ -21,7 +22,7 @@ for (const needle of [
   'id="consultation-form"',
   'action="https://api.web3forms.com/submit"',
   'name="access_key"',
-  'value="6325dd2b-6704-4b1e-9733-106d1f5d011c"',
+  'data-web3forms-access-key',
   'name="consultation_type"',
   'name="visitor_name"',
   'name="visitor_contact"',
@@ -35,6 +36,11 @@ for (const needle of [
 ]) {
   assert(contact.includes(needle), `contact.html contains ${needle}`);
 }
+
+assert(
+  !contact.includes(web3FormsAccessKey),
+  "contact.html does not expose the Web3Forms access key"
+);
 
 for (const forbidden of [
   'name="need_reply"',
@@ -79,6 +85,9 @@ for (const removedKey of [
 
 for (const needle of [
   "consultationForm",
+  "web3FormsAccessKeyParts",
+  "buildWeb3FormsAccessKey",
+  "setupConsultationAccessKey",
   "setupConsultationForm",
   "handleConsultationSubmit",
   "fetch(consultationForm.action",
@@ -92,6 +101,11 @@ for (const needle of [
 ]) {
   assert(js.includes(needle), `main.js contains ${needle}`);
 }
+
+assert(
+  !js.includes(web3FormsAccessKey),
+  "main.js does not store the Web3Forms access key as one literal"
+);
 
 for (const forbidden of [
   "consult.replyYes",

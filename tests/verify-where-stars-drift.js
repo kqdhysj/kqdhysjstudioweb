@@ -31,6 +31,15 @@ assert(detail.includes('class="work-detail-logo"'), "detail page places logo bes
 assert(detail.includes("assets/images/where-stars-drift-logo.png"), "detail page references work logo asset");
 assert(detail.includes('data-i18n="workDetail.steam.title"'), "detail page has Steam placeholder panel");
 
+const metaTable = detail.match(/<dl class="work-meta-table">[\s\S]*?<\/dl>/)?.[0] || "";
+assert(metaTable.length > 0, "detail page contains work metadata table");
+
+const metaCells = metaTable.match(/<(?:dt|dd)\b[^>]*>/g) || [];
+assert(metaCells.length === 14, "metadata table contains seven label/value rows");
+for (const tag of metaCells) {
+  assert(tag.includes("data-i18n="), `metadata cell is translatable: ${tag}`);
+}
+
 for (const needle of [
   ".work-detail-layout",
   ".work-detail-logo",
@@ -62,8 +71,23 @@ for (const key of [
   "workDetail.steam.price",
   "workDetail.steam.button",
   "works.card1.link",
+  "workDetail.meta.typeLabel",
+  "workDetail.meta.typeValue",
+  "workDetail.meta.statusLabel",
+  "workDetail.meta.statusValue",
+  "workDetail.meta.platformLabel",
+  "workDetail.meta.platformValue",
+  "workDetail.meta.releaseLabel",
+  "workDetail.meta.releaseValue",
+  "workDetail.meta.developerLabel",
+  "workDetail.meta.developerValue",
+  "workDetail.meta.engineLabel",
+  "workDetail.meta.engineValue",
+  "workDetail.meta.languageLabel",
+  "workDetail.meta.languageValue",
 ]) {
   assert(js.includes(`"${key}"`), `translation key ${key} exists`);
+  assert(detail.includes(`data-i18n="${key}"`) || !key.startsWith("workDetail.meta."), `detail page uses ${key}`);
 }
 
 process.exit(failed ? 1 : 0);

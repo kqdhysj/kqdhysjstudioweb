@@ -124,6 +124,8 @@ const protectedEmailParts = {
   feedback: ["kqdhysjwebfk", "yeah", "net"],
 };
 
+const web3FormsAccessKeyParts = ["6325dd2b", "6704", "4b1e", "9733", "106d1f5d011c"];
+
 const siteSearchIndex = [
   {
     href: "works.html",
@@ -418,19 +420,21 @@ const translations = {
     "workDetail.desc": "本页为作品《星河流转时》的详情展示页，当前内容为占位版本，后续可替换为正式介绍、截图、发行信息与购买链接。",
     "workDetail.metaHeading": "基础信息",
     "workDetail.meta.typeLabel": "作品类型",
-    "workDetail.meta.typeValue": "glagame / 文游 / 单机",
+    "workDetail.meta.typeValue": "科幻视觉小说 / 单机",
     "workDetail.meta.statusLabel": "开发状态",
-    "workDetail.meta.statusValue": "占位：制作中",
+    "workDetail.meta.statusValue": "剧本阶段",
     "workDetail.meta.platformLabel": "计划平台",
     "workDetail.meta.platformValue": "Windows / Steam",
     "workDetail.meta.releaseLabel": "发行时间",
-    "workDetail.meta.releaseValue": "占位：待公布",
+    "workDetail.meta.releaseValue": "待公布",
     "workDetail.meta.developerLabel": "开发",
     "workDetail.meta.developerValue": "kqdhysj工作室",
     "workDetail.meta.publisherLabel": "发行",
     "workDetail.meta.publisherValue": "占位：待确认",
-    "workDetail.meta.languageLabel": "语言支持",
-    "workDetail.meta.languageValue": "占位：简体中文、繁体中文、英文",
+    "workDetail.meta.engineLabel": "引擎",
+    "workDetail.meta.engineValue": "Ren'Py",
+    "workDetail.meta.languageLabel": "语种支持",
+    "workDetail.meta.languageValue": "简体中文 / 香港及台湾繁体 / 英文 / 日文",
     "workDetail.intro.title": "作品介绍",
     "workDetail.intro.p1": "占位符：这里将介绍《星河流转时》的世界观、故事背景与核心冲突，让玩家快速理解本作的叙事方向。",
     "workDetail.intro.p2": "占位符：这里将补充主要角色、章节结构、玩家选择与结局分支，后续可替换为正式宣传文案。",
@@ -770,19 +774,21 @@ const translations = {
     "workDetail.desc": "本頁為作品《星河流轉時》的詳情展示頁，目前內容為佔位版本，後續可替換為正式介紹、截圖、發行資訊與購買連結。",
     "workDetail.metaHeading": "基礎資訊",
     "workDetail.meta.typeLabel": "作品類型",
-    "workDetail.meta.typeValue": "glagame / 文遊 / 單機",
+    "workDetail.meta.typeValue": "科幻視覺小說 / 單機",
     "workDetail.meta.statusLabel": "開發狀態",
-    "workDetail.meta.statusValue": "佔位：製作中",
+    "workDetail.meta.statusValue": "劇本階段",
     "workDetail.meta.platformLabel": "計劃平台",
     "workDetail.meta.platformValue": "Windows / Steam",
     "workDetail.meta.releaseLabel": "發行時間",
-    "workDetail.meta.releaseValue": "佔位：待公布",
+    "workDetail.meta.releaseValue": "待公布",
     "workDetail.meta.developerLabel": "開發",
     "workDetail.meta.developerValue": "kqdhysj工作室",
     "workDetail.meta.publisherLabel": "發行",
     "workDetail.meta.publisherValue": "佔位：待確認",
-    "workDetail.meta.languageLabel": "語言支援",
-    "workDetail.meta.languageValue": "佔位：簡體中文、繁體中文、英文",
+    "workDetail.meta.engineLabel": "引擎",
+    "workDetail.meta.engineValue": "Ren'Py",
+    "workDetail.meta.languageLabel": "語種支援",
+    "workDetail.meta.languageValue": "簡體中文 / 香港及台灣繁體 / 英文 / 日文",
     "workDetail.intro.title": "作品介紹",
     "workDetail.intro.p1": "佔位符：這裡將介紹《星河流轉時》的世界觀、故事背景與核心衝突，讓玩家快速理解本作的敘事方向。",
     "workDetail.intro.p2": "佔位符：這裡將補充主要角色、章節結構、玩家選擇與結局分支，後續可替換為正式宣傳文案。",
@@ -1122,19 +1128,21 @@ const translations = {
     "workDetail.desc": "This is the detail page for Where Stars Drift. Current content is placeholder text and can later be replaced with the official introduction, screenshots, release information, and purchase link.",
     "workDetail.metaHeading": "Basic Information",
     "workDetail.meta.typeLabel": "Type",
-    "workDetail.meta.typeValue": "glagame / text-based game / standalone",
+    "workDetail.meta.typeValue": "Sci-fi visual novel / standalone",
     "workDetail.meta.statusLabel": "Development status",
-    "workDetail.meta.statusValue": "Placeholder: in production",
+    "workDetail.meta.statusValue": "Script stage",
     "workDetail.meta.platformLabel": "Planned platform",
     "workDetail.meta.platformValue": "Windows / Steam",
     "workDetail.meta.releaseLabel": "Release date",
-    "workDetail.meta.releaseValue": "Placeholder: to be announced",
+    "workDetail.meta.releaseValue": "To be announced",
     "workDetail.meta.developerLabel": "Developer",
     "workDetail.meta.developerValue": "kqdhysj Studio",
     "workDetail.meta.publisherLabel": "Publisher",
     "workDetail.meta.publisherValue": "Placeholder: to be confirmed",
-    "workDetail.meta.languageLabel": "Languages",
-    "workDetail.meta.languageValue": "Placeholder: Simplified Chinese, Traditional Chinese, English",
+    "workDetail.meta.engineLabel": "Engine",
+    "workDetail.meta.engineValue": "Ren'Py",
+    "workDetail.meta.languageLabel": "Language support",
+    "workDetail.meta.languageValue": "Simplified Chinese / Hong Kong and Taiwan Traditional Chinese / English / Japanese",
     "workDetail.intro.title": "Introduction",
     "workDetail.intro.p1": "Placeholder: this section will introduce the world, story background, and central conflict of Where Stars Drift.",
     "workDetail.intro.p2": "Placeholder: this section will cover main characters, chapter structure, player choices, and ending branches.",
@@ -1370,6 +1378,30 @@ function setupProtectedEmailActions() {
   });
 }
 
+function buildWeb3FormsAccessKey() {
+  return web3FormsAccessKeyParts.join("-");
+}
+
+function setupConsultationAccessKey() {
+  if (!consultationForm) return "";
+  let accessKeyInput = consultationForm.querySelector("[data-web3forms-access-key]");
+
+  if (!accessKeyInput) {
+    accessKeyInput = consultationForm.querySelector('input[name="access_key"]');
+  }
+
+  if (!accessKeyInput) {
+    accessKeyInput = document.createElement("input");
+    accessKeyInput.type = "hidden";
+    accessKeyInput.name = "access_key";
+    accessKeyInput.dataset.web3formsAccessKey = "true";
+    consultationForm.prepend(accessKeyInput);
+  }
+
+  accessKeyInput.value = buildWeb3FormsAccessKey();
+  return accessKeyInput.value;
+}
+
 function setConsultationStatus(messageKey, mode = "info") {
   if (!consultationStatus) return;
   consultationStatus.textContent = t(messageKey);
@@ -1414,6 +1446,7 @@ async function handleConsultationSubmit(event) {
 
   if (!validateConsultationContact()) return;
 
+  setupConsultationAccessKey();
   const formData = new FormData(consultationForm);
   if (formData.get("botcheck")) {
     setConsultationStatus("consult.success", "success");
@@ -1448,6 +1481,7 @@ async function handleConsultationSubmit(event) {
 
 function setupConsultationForm() {
   if (!consultationForm) return;
+  setupConsultationAccessKey();
   const contactInput = consultationForm.querySelector('[name="visitor_contact"]');
   contactInput?.addEventListener("input", () => validateConsultationContact(false));
   contactInput?.addEventListener("blur", () => validateConsultationContact(false));
