@@ -6,6 +6,8 @@ const searchForm = document.querySelector(".site-search");
 const searchInput = document.querySelector("#site-search-input");
 const searchStatus = document.querySelector(".search-status");
 const searchResults = document.querySelector("#site-search-results");
+const consultationForm = document.querySelector("#consultation-form");
+const consultationStatus = document.querySelector("#consultation-form-status");
 const backTop = document.querySelector(".back-top");
 const accessibilityModeToggle = document.querySelector("#accessibility-mode-toggle");
 const accessibilityPanel = document.querySelector("#accessibility-panel");
@@ -117,6 +119,11 @@ const sectionPageMap = {
   "where-stars-drift.html": "works.html",
 };
 
+const protectedEmailParts = {
+  primary: ["kqdhysj114514", "163", "com"],
+  feedback: ["kqdhysjwebfk", "yeah", "net"],
+};
+
 const siteSearchIndex = [
   {
     href: "works.html",
@@ -162,6 +169,12 @@ const siteSearchIndex = [
       "购买入口",
       "購買入口",
     ],
+  },
+  {
+    href: "contact.html#consultation-form",
+    titleKey: "consult.title",
+    excerptKeys: ["consult.desc", "contact.desc"],
+    keywords: ["咨询", "諮詢", "contact", "inquiry", "合作", "反馈", "反饋", "无障碍", "無障礙"],
   },
 ];
 
@@ -470,8 +483,39 @@ const translations = {
     "footer.title": "kqdhysj工作室信息门户",
     "footer.host": "主办：kqdhysj",
     "footer.organizer": "承办：kqdhysj",
-    "footer.email": "联系方式：kqdhysj114514@163.com",
-    "footer.feedback": "网站反馈：kqdhysjwebfk@yeah.net",
+    "contact.emailAction": "发送工作室联系邮件",
+    "contact.emailActionAria": "发送工作室联系邮件",
+    "contact.feedbackActionAria": "发送网站反馈邮件",
+    "consult.title": "咨询表单",
+    "consult.desc": "可提交项目咨询、合作沟通、作品相关问题、网站反馈和无障碍访问问题。",
+    "consult.type": "咨询类型",
+    "consult.typePlaceholder": "请选择",
+    "consult.typeProject": "项目咨询",
+    "consult.typeCooperation": "合作沟通",
+    "consult.typeWorks": "作品相关",
+    "consult.typeWebsite": "网站问题反馈",
+    "consult.typeAccessibility": "无障碍访问问题",
+    "consult.typeOther": "其他",
+    "consult.name": "你的称呼",
+    "consult.contact": "联系方式",
+    "consult.contactPlaceholder": "可填写邮箱、QQ、微信或其他方式",
+    "consult.language": "希望使用的语言",
+    "consult.subject": "咨询标题",
+    "consult.message": "咨询内容",
+    "consult.messagePlaceholder": "请尽量说明事项背景、相关页面或作品名称、希望解决的问题",
+    "consult.link": "相关链接",
+    "consult.linkPlaceholder": "可选",
+    "consult.reply": "是否需要回复",
+    "consult.replyYes": "需要回复",
+    "consult.replyNo": "仅提交信息，不需要回复",
+    "consult.consent": "我确认以上内容真实有效，并同意 kqdhysj工作室仅将本次填写的信息用于联系、咨询处理和网站反馈处理。",
+    "consult.submit": "提交咨询",
+    "consult.submitting": "正在提交咨询，请稍候。",
+    "consult.success": "咨询信息已提交，感谢联系 kqdhysj工作室。",
+    "consult.error": "提交未成功，请稍后重试，或使用邮箱联系入口。",
+    "consult.ready": "咨询表单已就绪。",
+    "footer.email": "联系方式：邮箱联系",
+    "footer.feedback": "网站反馈：反馈邮箱",
     "footer.feedbackPage": "网站纠错",
     "footer.sitemap": "网站地图",
     "backtop.aria": "返回顶部",
@@ -794,8 +838,39 @@ const translations = {
     "footer.title": "kqdhysj工作室資訊入口",
     "footer.host": "主辦：kqdhysj",
     "footer.organizer": "承辦：kqdhysj",
-    "footer.email": "聯絡方式：kqdhysj114514@163.com",
-    "footer.feedback": "網站反饋：kqdhysjwebfk@yeah.net",
+    "contact.emailAction": "發送工作室聯絡郵件",
+    "contact.emailActionAria": "發送工作室聯絡郵件",
+    "contact.feedbackActionAria": "發送網站反饋郵件",
+    "consult.title": "諮詢表單",
+    "consult.desc": "可提交項目諮詢、合作溝通、作品相關問題、網站反饋和無障礙訪問問題。",
+    "consult.type": "諮詢類型",
+    "consult.typePlaceholder": "請選擇",
+    "consult.typeProject": "項目諮詢",
+    "consult.typeCooperation": "合作溝通",
+    "consult.typeWorks": "作品相關",
+    "consult.typeWebsite": "網站問題反饋",
+    "consult.typeAccessibility": "無障礙訪問問題",
+    "consult.typeOther": "其他",
+    "consult.name": "你的稱呼",
+    "consult.contact": "聯絡方式",
+    "consult.contactPlaceholder": "可填寫電郵、QQ、微信或其他方式",
+    "consult.language": "希望使用的語言",
+    "consult.subject": "諮詢標題",
+    "consult.message": "諮詢內容",
+    "consult.messagePlaceholder": "請盡量說明事項背景、相關頁面或作品名稱、希望解決的問題",
+    "consult.link": "相關連結",
+    "consult.linkPlaceholder": "可選",
+    "consult.reply": "是否需要回覆",
+    "consult.replyYes": "需要回覆",
+    "consult.replyNo": "僅提交資訊，不需要回覆",
+    "consult.consent": "我確認以上內容真實有效，並同意 kqdhysj工作室僅將本次填寫的資訊用於聯絡、諮詢處理和網站反饋處理。",
+    "consult.submit": "提交諮詢",
+    "consult.submitting": "正在提交諮詢，請稍候。",
+    "consult.success": "諮詢資訊已提交，感謝聯絡 kqdhysj工作室。",
+    "consult.error": "提交未成功，請稍後重試，或使用電郵聯絡入口。",
+    "consult.ready": "諮詢表單已就緒。",
+    "footer.email": "聯絡方式：電郵聯絡",
+    "footer.feedback": "網站反饋：反饋電郵",
     "footer.feedbackPage": "網站糾錯",
     "footer.sitemap": "網站地圖",
     "backtop.aria": "返回頂部",
@@ -1118,8 +1193,39 @@ const translations = {
     "footer.title": "kqdhysj Studio Information Portal",
     "footer.host": "Hosted by: kqdhysj",
     "footer.organizer": "Organized by: kqdhysj",
-    "footer.email": "Email: kqdhysj114514@163.com",
-    "footer.feedback": "Website feedback: kqdhysjwebfk@yeah.net",
+    "contact.emailAction": "Send studio email",
+    "contact.emailActionAria": "Send studio contact email",
+    "contact.feedbackActionAria": "Send website feedback email",
+    "consult.title": "Consultation Form",
+    "consult.desc": "Submit project inquiries, collaboration messages, work-related questions, website feedback, or accessibility issues.",
+    "consult.type": "Inquiry type",
+    "consult.typePlaceholder": "Please select",
+    "consult.typeProject": "Project inquiry",
+    "consult.typeCooperation": "Collaboration",
+    "consult.typeWorks": "Work-related",
+    "consult.typeWebsite": "Website feedback",
+    "consult.typeAccessibility": "Accessibility issue",
+    "consult.typeOther": "Other",
+    "consult.name": "Your name",
+    "consult.contact": "Contact method",
+    "consult.contactPlaceholder": "Email, QQ, WeChat, or another contact method",
+    "consult.language": "Preferred language",
+    "consult.subject": "Subject",
+    "consult.message": "Message",
+    "consult.messagePlaceholder": "Please describe the background, related page or work, and the issue you want to resolve",
+    "consult.link": "Related link",
+    "consult.linkPlaceholder": "Optional",
+    "consult.reply": "Reply needed",
+    "consult.replyYes": "Reply needed",
+    "consult.replyNo": "Submit only, no reply needed",
+    "consult.consent": "I confirm the information is accurate and agree that kqdhysj Studio may use it only for contact, inquiry handling, and website feedback handling.",
+    "consult.submit": "Submit inquiry",
+    "consult.submitting": "Submitting your inquiry. Please wait.",
+    "consult.success": "Your inquiry has been submitted. Thank you for contacting kqdhysj Studio.",
+    "consult.error": "Submission failed. Please try again later or use the email contact entry.",
+    "consult.ready": "The consultation form is ready.",
+    "footer.email": "Contact: Email",
+    "footer.feedback": "Website feedback: Feedback email",
     "footer.feedbackPage": "Corrections",
     "footer.sitemap": "Sitemap",
     "backtop.aria": "Back to top",
@@ -1222,6 +1328,10 @@ function applyLanguage(language) {
     element.setAttribute("aria-label", t(element.dataset.i18nAria));
   });
 
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    element.setAttribute("placeholder", t(element.dataset.i18nPlaceholder));
+  });
+
   document.querySelectorAll("[data-i18n-src]").forEach((element) => {
     const sourceTemplate = element.dataset.i18nSrc;
     if (sourceTemplate) {
@@ -1241,6 +1351,91 @@ function applyLanguage(language) {
   if (searchInput?.value.trim()) {
     updateSearchSuggestions();
   }
+}
+
+function buildProtectedEmail(key) {
+  const parts = protectedEmailParts[key];
+  if (!parts) return "";
+  const [localPart, domainName, topLevelDomain] = parts;
+  return `${localPart}${String.fromCharCode(64)}${domainName}.${topLevelDomain}`;
+}
+
+function handleProtectedEmailClick(event) {
+  const trigger = event.currentTarget;
+  const email = buildProtectedEmail(trigger.dataset.protectedEmail);
+  if (!email) return;
+
+  event.preventDefault();
+  window.location.href = `mailto:${email}`;
+}
+
+function setupProtectedEmailActions() {
+  document.querySelectorAll("[data-protected-email]").forEach((trigger) => {
+    if (trigger.dataset.emailReady === "true") return;
+    trigger.dataset.emailReady = "true";
+    trigger.setAttribute("rel", "nofollow");
+    trigger.addEventListener("click", handleProtectedEmailClick);
+  });
+}
+
+function setConsultationStatus(messageKey, mode = "info") {
+  if (!consultationStatus) return;
+  consultationStatus.textContent = t(messageKey);
+  consultationStatus.dataset.status = mode;
+  setReaderStatus(t(messageKey));
+}
+
+function setConsultationSubmitting(isSubmitting) {
+  const submitButton = consultationForm?.querySelector('button[type="submit"]');
+  if (!submitButton) return;
+  submitButton.disabled = isSubmitting;
+  submitButton.textContent = t(isSubmitting ? "consult.submitting" : "consult.submit");
+  submitButton.setAttribute("aria-busy", String(isSubmitting));
+}
+
+async function handleConsultationSubmit(event) {
+  event.preventDefault();
+  if (!consultationForm || consultationForm.dataset.submitting === "true") return;
+
+  const formData = new FormData(consultationForm);
+  if (formData.get("botcheck")) {
+    setConsultationStatus("consult.success", "success");
+    consultationForm.reset();
+    return;
+  }
+
+  consultationForm.dataset.submitting = "true";
+  setConsultationSubmitting(true);
+  setConsultationStatus("consult.submitting");
+
+  try {
+    const response = await fetch(consultationForm.action, {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success === false) {
+      throw new Error(result.message || "Form submission failed");
+    }
+
+    consultationForm.reset();
+    const replyDefault = consultationForm.querySelector('input[name="need_reply"][value="需要回复"]');
+    if (replyDefault) {
+      replyDefault.checked = true;
+    }
+    setConsultationStatus("consult.success", "success");
+  } catch (error) {
+    setConsultationStatus("consult.error", "error");
+  } finally {
+    consultationForm.dataset.submitting = "false";
+    setConsultationSubmitting(false);
+  }
+}
+
+function setupConsultationForm() {
+  if (!consultationForm) return;
+  consultationForm.addEventListener("submit", handleConsultationSubmit);
 }
 
 function closeNav() {
@@ -2161,6 +2356,8 @@ function setupSteamPlaceholderButton() {
 }
 
 applyLanguage(state.language);
+setupProtectedEmailActions();
+setupConsultationForm();
 applySeniorMode();
 applyAccessDisplaySettings();
 setupSteamPlaceholderButton();

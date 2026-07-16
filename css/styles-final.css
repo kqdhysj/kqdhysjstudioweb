@@ -745,6 +745,12 @@ strong {
   background: #fff;
 }
 
+.button:disabled {
+  cursor: wait;
+  opacity: .68;
+  transform: none;
+}
+
 .hero__panel {
   position: relative;
   overflow: hidden;
@@ -1891,6 +1897,134 @@ strong {
   word-break: normal;
 }
 
+.consultation-form {
+  margin-bottom: 22px;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--red-700);
+}
+
+.consultation-form__head {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.consultation-form__head h2 {
+  margin: 0;
+  color: var(--red-700);
+  font-size: 22px;
+}
+
+.consultation-form__head p {
+  margin: 0;
+  color: var(--ink-600);
+}
+
+.consultation-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  color: var(--ink-700);
+  font-weight: 700;
+}
+
+.form-field--wide {
+  grid-column: 1 / -1;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-900);
+  font: inherit;
+  font-weight: 500;
+}
+
+.form-field textarea {
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: 3px solid rgba(171, 0, 13, .18);
+  border-color: var(--red-700);
+}
+
+.form-field--fieldset {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+}
+
+.form-field--fieldset legend {
+  padding: 0 6px;
+  color: var(--ink-700);
+}
+
+.form-field--fieldset label,
+.form-field--check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.form-field--fieldset input,
+.form-field--check input {
+  width: auto;
+  min-height: auto;
+  margin-top: 5px;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.form-status {
+  margin: 0;
+  color: var(--ink-600);
+  font-weight: 700;
+}
+
+.form-status[data-status="success"] {
+  color: #0f6f3f;
+}
+
+.form-status[data-status="error"] {
+  color: var(--red-700);
+}
+
+.form-botcheck {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .site-footer {
   margin-top: 24px;
   background: #e6e8eb;
@@ -2412,9 +2546,26 @@ body.is-sixty-seven-wobbling .home-main-side {
   .portal-page .portal-service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .consultation-form__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
+  .consultation-form {
+    padding: 16px;
+  }
+
+  .form-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .form-actions .button {
+    width: 100%;
+  }
+
   .topbar__inner {
     align-items: flex-start;
     flex-direction: column;
