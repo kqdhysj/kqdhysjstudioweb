@@ -1267,6 +1267,7 @@ const state = {
   weather: null,
   weatherCitySuggestTimer: 0,
   sixtySevenWobbleTimer: 0,
+  cialloBarrageTimer: 0,
   searchMatches: [],
 };
 
@@ -1677,6 +1678,52 @@ function triggerSixtySevenWobble(query) {
   }, 3000);
 }
 
+function removeCialloBarrage() {
+  window.clearTimeout(state.cialloBarrageTimer);
+  document.querySelector(".ciallo-barrage")?.remove();
+}
+
+function triggerCialloBarrage(query) {
+  const normalizedQuery = String(query || "").trim().toLowerCase().replace(/[\s\-_~!]+/g, "");
+  if (normalizedQuery !== "ciallo") return false;
+
+  removeCialloBarrage();
+
+  const barrage = document.createElement("div");
+  barrage.className = "ciallo-barrage";
+  barrage.setAttribute("aria-hidden", "true");
+
+  const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const compactViewport = window.matchMedia?.("(max-width: 720px)").matches;
+  const cialloBarrageCount = prefersReducedMotion ? 18 : compactViewport ? 48 : 72;
+  const colors = ["#b60009", "#c99a33", "#ffffff", "#ffe8a3", "#7a0010"];
+  const fragment = document.createDocumentFragment();
+
+  for (let index = 0; index < cialloBarrageCount; index += 1) {
+    const item = document.createElement("span");
+    item.className = "ciallo-barrage__item";
+    item.textContent = index % 4 === 0 ? "ciallo~~" : "ciallo~";
+    const top = (index * (100 / cialloBarrageCount) + Math.random() * 4.8) % 100;
+    const duration = prefersReducedMotion ? 0.01 : 2.8 + Math.random() * 2.2;
+    const delay = prefersReducedMotion ? 0 : Math.random() * 1.05;
+
+    item.style.setProperty("--ciallo-top", `${top.toFixed(2)}vh`);
+    item.style.setProperty("--ciallo-size", `${Math.round(16 + Math.random() * 18)}px`);
+    item.style.setProperty("--ciallo-color", colors[index % colors.length]);
+    item.style.setProperty("--ciallo-duration", `${duration.toFixed(2)}s`);
+    item.style.setProperty("--ciallo-delay", `${delay.toFixed(2)}s`);
+    const tilt = Math.random() * 8 - 4;
+    item.style.setProperty("--ciallo-tilt", `${tilt.toFixed(2)}deg`);
+    item.style.setProperty("--ciallo-end-tilt", `${(-tilt).toFixed(2)}deg`);
+    fragment.append(item);
+  }
+
+  barrage.append(fragment);
+  document.body.append(barrage);
+  state.cialloBarrageTimer = window.setTimeout(removeCialloBarrage, prefersReducedMotion ? 900 : 5600);
+  return true;
+}
+
 function locateSearchMatch(match) {
   if (!match) return;
   if (match.href) {
@@ -1696,6 +1743,11 @@ function updateSearchSuggestions() {
   if (!searchInput) return;
   const query = searchInput.value.trim();
   triggerSixtySevenWobble(query);
+  if (triggerCialloBarrage(query)) {
+    hideSearchResults();
+    if (searchStatus) searchStatus.textContent = "";
+    return;
+  }
   if (!query) {
     hideSearchResults();
     if (searchStatus) searchStatus.textContent = "";
@@ -1720,6 +1772,11 @@ function handleSearch(event) {
   }
 
   state.searchMatches = getSearchMatches(query);
+  if (triggerCialloBarrage(query)) {
+    hideSearchResults();
+    if (searchStatus) searchStatus.textContent = "";
+    return;
+  }
   if (!state.searchMatches.length) {
     hideSearchResults();
     searchStatus.textContent = t("search.none").replace("{query}", query);

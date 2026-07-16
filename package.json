@@ -1,0 +1,16 @@
+{
+  "name": "kqdhysj-studio-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "kqdhysj工作室信息门户维护工具",
+  "scripts": {
+    "check:js": "node --check js/main.js",
+    "test": "node scripts/run-checks.js --tests-only",
+    "verify": "node scripts/run-checks.js",
+    "sync:outputs": "node scripts/sync-outputs.js",
+    "serve": "node scripts/serve.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
